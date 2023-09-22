@@ -7,15 +7,19 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializeKeycloak } from './core/init/keycloak-init.factory';
 import { ApiService } from './core/services/apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from 'src/layouts/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent  
   ],
   imports: [
     BrowserModule,
     KeycloakAngularModule,
     AppRoutingModule,
-    HttpClientModule  
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
