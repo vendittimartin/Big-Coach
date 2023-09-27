@@ -8,11 +8,13 @@ import { initializeKeycloak } from './core/init/keycloak-init.factory';
 import { ApiService } from './core/services/apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from 'src/layouts/header/header.component';
+import { FooterComponent } from 'src/layouts/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent  
+    HeaderComponent,
+    FooterComponent  
   ],
   imports: [
     BrowserModule,

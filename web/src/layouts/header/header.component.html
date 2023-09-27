@@ -1,23 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D9D9D9;">
-  
-    <img style="width: 12%; height: 12%;" src="../../../../assets/img/big-coach-icon.png">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-between ms-10" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#" style="color: #BA3B0A"><strong>Mi equipo</strong></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color: #BA3B0A"><strong>Equipos</strong></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color: #BA3B0A"><strong>Ranking</strong></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color: #BA3B0A"><strong>Perfil</strong></a>
-        </li>
-      </ul>
+<nav class="bg-BCgrisOscuro p-1 pr-12">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center">
+            <button href="#">
+                <img src="../../../../assets/img/big-coach-icon.png" alt="Logo" class="w-30 h-16 object-cover mr-2">
+            </button>
+        </div>
+        <div class="md:hidden">
+            <button (click)="toggleMenu()" id="menu-toggle" class="text-white hover:text-blue-300 focus:outline-none">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    viewBox="0 0 24 24" class="w-6 h-6">
+                    <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Enlaces del Navbar (visible en dispositivos de pantalla grande) -->
+        <ul class="hidden md:flex space-x-7">
+            <li><a href="#" class="text-white text-lg font-bold hover:text-BCnaranja">Inicio</a></li>
+            <li><a href="#" class="text-white text-lg font-bold hover:text-BCnaranja">Mi equipo</a></li>
+            <li><a href="#" class="text-white text-lg font-bold hover:text-BCnaranja">Equipos</a></li>
+            <li><a href="#" class="text-white text-lg font-bold hover:text-BCnaranja">Ranking</a></li>
+            <li><a href="#" class="text-white text-lg font-bold hover:text-BCnaranja">Perfil</a></li>
+        </ul>
     </div>
-  </nav>
+</nav>
+
+<!-- Menú hamburguesa (visible en dispositivos móviles) -->
+<div [ngClass]="{'hidden': !showMenu}" class="md:hidden hidden" id="mobile-menu">
+    <ul class="bg-BCgrisOscuro py-2 px-4 space-y-2">
+        <li><a href="#" class="text-white text-lg hover:text-BCnaranja">Inicio</a></li>
+        <li><a href="#" class="text-white text-lg hover:text-BCnaranja">Mi equipo</a></li>
+        <li><a href="#" class="text-white text-lg hover:text-BCnaranja">Equipos</a></li>
+        <li><a href="#" class="text-white text-lg hover:text-BCnaranja">Ranking</a></li>
+        <li><a href="#" class="text-white text-lg hover:text-BCnaranja">Perfil</a></li>
+    </ul>
+</div>
