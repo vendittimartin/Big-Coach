@@ -5,3 +5,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    background-image: url('./assets/img/BASKETBALL_FADE.jpg') ; 
+    height: 100vh; 
+    background-size: cover; 
+    padding: 0; margin:0;
+}
+
+@font-face {
+    font-family: 'MainFont'; 
+    src: url('./assets/fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }

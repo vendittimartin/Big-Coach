@@ -1,0 +1,28 @@
+
+.content-container {
+    background-color: rgba(255, 255, 255, 0); 
+    padding: 20px;
+  }
+
+* {
+    color: white;
+}
+
+.boton-registrar{
+  background: linear-gradient(to right, orange, red);
+  color:black;
+  font-weight: 500;
+}
+
+.texto-degradado {
+  font-family: 'MainFont', sans-serif;
+  background: linear-gradient(to right, orange, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-size: 700%;
+  font-size: 15vh;
+  font-weight: 900;
+}
+  

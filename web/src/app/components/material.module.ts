@@ -8,6 +8,8 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { MiEquipoComponent } from './mi-equipo/mi-equipo.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CdkTableModule
+    CdkTableModule,
+    MatButtonModule
   ],
   declarations: [
     EquiposComponent,

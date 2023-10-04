@@ -4,6 +4,7 @@ import { KeycloakProfile } from 'keycloak-js';
 import { ApiService } from '../../core/services/apiservice.service';
 import { ITestResponse } from '../../core/models/response.interface';
 
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
