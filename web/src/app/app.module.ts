@@ -1,15 +1,16 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializeKeycloak } from './core/init/keycloak-init.factory';
 import { ApiService } from './core/services/apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from 'src/layouts/header/header.component';
-import { FooterComponent } from 'src/layouts/footer/footer.component';
+import { HeaderComponent } from 'src/app/layouts/header/header.component';
+import { FooterComponent } from 'src/app/layouts/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialComponentsModule } from './components/material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     KeycloakAngularModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    MaterialComponentsModule
   ],
   providers: [
     {
