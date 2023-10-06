@@ -12,6 +12,7 @@
   background: linear-gradient(to right, orange, red);
   color:black;
   font-weight: 500;
+  width: 33.333333%;
 }
 
 .texto-degradado {
@@ -24,5 +25,24 @@
   font-size: 700%;
   font-size: 15vh;
   font-weight: 900;
+}
+
+@media screen and (max-width: 1110px) {
+  .boton-registrar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 810px) {
+    .boton-registrar {
+      width: 75%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+    .boton-registrar {
+      width: 100%;
+      padding: 20%;;
+    }
 }
   

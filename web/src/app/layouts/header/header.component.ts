@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +8,23 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements AfterViewInit{
   showMenu: boolean = false;
+  public isLogueado = false;
+  constructor(private readonly keycloak: KeycloakService){}
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
+    this.isLogueado = await this.keycloak.isLoggedIn();
 
   }
   
   toggleMenu() {
     this.showMenu = !this.showMenu;
+  }
+
+  iniciarSesion(){
+    this.keycloak.login();
+  }
+
+  cerrarSesion(){
+    this.keycloak.logout();
   }
 }

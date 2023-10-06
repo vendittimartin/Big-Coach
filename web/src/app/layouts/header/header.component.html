@@ -12,25 +12,44 @@
             </button>
         </div>
 
-<!--  Enlaces del Navbar (visible en dispositivos de pantalla grande) -->
-        <ul class="hidden md:flex space-x-7">
-            <li><a routerLink="/" routerLinkActive="text-BCnaranja" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Inicio</a></li>
-            <li><a routerLink="/mi-equipo" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Mi equipo</a></li>
-            <li><a routerLink="/equipos" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Equipos</a></li>
-            <li><a routerLink="/ranking" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Ranking</a></li>
-            <li><a routerLink="/perfil" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Perfil</a></li>
+        <!-- Navbar para usuarios LOGUEADOS -->
+        <ul *ngIf="this.isLogueado" class="hidden md:flex space-x-7">
+            <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
+            <li><a routerLink="/mi-equipo" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Mi equipo</a></li>
+            <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
+            <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
+            <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>
+            <li><a (click)='cerrarSesion()' routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Cerrar sesión</a></li>
+        </ul> 
+        
+        <!-- Navbar para usuarios NO logueados -->
+        <ul *ngIf="!this.isLogueado" class="hidden md:flex space-x-7">
+            <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
+            <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
+            <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
+            <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
+            <li><a routerLink="/sobre-nosotros" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre nosotros</a></li>
         </ul> 
     </div>
 </nav>
 
-<!-- Menú hamburguesa (visible en dispositivos móviles) -->
-<div [ngClass]="{'hidden': !showMenu}" class="md:hidden hidden" id="mobile-menu">
-    <ul class="py-2 px-4 space-y-2" stlye="background-color: rgba(255, 255, 255, 0);">
-        <li><a routerLink="/" routerLinkActive="text-BCnaranja" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Inicio</a></li>
-        <li><a routerLink="/mi-equipo" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Mi equipo</a></li>
-        <li><a routerLink="/equipos" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Equipos</a></li>
-        <li><a routerLink="/ranking" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Ranking</a></li>
-        <li><a routerLink="/perfil" routerLinkActive="text-BCnaranja" class="text-white text-lg font-semibold hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-transparent hover:bg-clip-text">Perfil</a></li>
 
+<div [ngClass]="{'hidden': !showMenu}" class="md:hidden hidden" id="mobile-menu">
+    <!-- Menú hamburguesa para usuario LOGUEADO -->
+    <ul *ngIf="this.isLogueado" class="py-2 px-4 space-y-2 items-center justify-center text-center" stlye="background-color: rgba(255, 255, 255, 0);">
+        <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
+        <li><a routerLink="/mi-equipo" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Mi equipo</a></li>
+        <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
+        <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
+        <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>    
+        <li><a (click)='cerrarSesion()' routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Cerrar sesión</a></li>
+    </ul>
+
+    <!-- Menú hamburguesa para usuario NO logueado -->
+    <ul *ngIf="!this.isLogueado" class="py-2 px-4 space-y-2 items-center justify-center text-center" stlye="background-color: rgba(255, 255, 255, 0);">
+        <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
+        <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
+        <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
+        <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
     </ul>
 </div>
