@@ -1,6 +1,6 @@
 
 a.link-Activo, a:hover {
-    background: linear-gradient(to right, #c25a00, red);
+    background-color:#ff5100;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
