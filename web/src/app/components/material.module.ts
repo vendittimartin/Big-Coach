@@ -9,6 +9,8 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MiEquipoComponent } from './mi-equipo/mi-equipo.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -18,7 +20,10 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     CdkTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   declarations: [
     EquiposComponent,
