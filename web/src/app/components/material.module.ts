@@ -11,6 +11,13 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule} from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MiModalComponent } from './mi-equipo/mi-modal/mi-modal.component';
+
+
 
 
 @NgModule({
@@ -23,14 +30,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatDialogModule
   ],
   declarations: [
     EquiposComponent,
     InicioComponent,
     RankingComponent,
     MiEquipoComponent,
-    PerfilComponent
+    PerfilComponent,
+    MiModalComponent
   ]
 })
 export class MaterialComponentsModule { }
