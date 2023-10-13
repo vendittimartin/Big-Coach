@@ -1,3 +1,31 @@
-<p class="text-white">perfil works!</p>
-
-<p *ngIf="perfilUsuario" class="text-white">Usuario: {{ perfilUsuario?.username }} </p>
+<div class="w-screen h-screen flex flex-col justify-center items-center space-y-4">
+  <div *ngIf="perfilUsuario" class="bg-[#ff5100] w-2/5 min-w-[344px] p-10 rounded-lg shadow-lg text-center">
+    <div class="text-center mb-4">
+      <h3 class="text-4xl font-bold text-black">BALTIMORE</h3>
+    </div>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.firstName">
+      <mat-icon class="mr-3">person</mat-icon>{{ perfilUsuario?.firstName }}
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.email">
+      <mat-icon class="mr-3">email</mat-icon>{{ perfilUsuario?.email }}
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center " *ngIf="perfilUsuario">
+      <mat-icon class="mr-3">https</mat-icon>Contraseña: *********** 
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.emailVerified === true">
+      <mat-icon class="mr-3">verified_user</mat-icon> El correo se encuentra verificado
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.emailVerified === false">
+      <mat-icon class="mr-3">cancel</mat-icon>Correo no verificado
+    </p>
+  </div>
+  <div class="mt-4">
+    <button
+      (click)="cerrarSesion()"
+      mat-primary
+      class="rounded-full bg-[#ff5100] hover:bg-[#e64a00] px-6 py-3 text-xl font-semibold :outline-none focus:ring focus:ring-red-300"
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</div>
