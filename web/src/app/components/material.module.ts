@@ -16,6 +16,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule} from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MiModalComponent } from './mi-equipo/mi-modal/mi-modal.component';
+import { TablaJugadoresComponent } from './mi-equipo/tabla-jugadores/tabla-jugadores.component';
+import { TablaEquipoComponent } from './mi-equipo/tabla-equipo/tabla-equipo.component';
 
 
 
@@ -42,7 +44,9 @@ import { MiModalComponent } from './mi-equipo/mi-modal/mi-modal.component';
     RankingComponent,
     MiEquipoComponent,
     PerfilComponent,
-    MiModalComponent
+    MiModalComponent,
+    TablaJugadoresComponent,
+    TablaEquipoComponent
   ]
 })
 export class MaterialComponentsModule { }
