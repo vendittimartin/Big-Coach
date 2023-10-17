@@ -17,7 +17,9 @@ public class Partido {
     private Integer id;
     private String equipo1;
     private String equipo2;
-    private Date string;
+    private Date fecha;
+    private Integer puntosEquipo1;
+    private Date puntosEquipo2;
 
     @OneToMany(mappedBy = "partido")
     private List<EstadisticasPartido> estadisticasPartido;

@@ -29,4 +29,5 @@ public class Jugador {
 
     @OneToMany(mappedBy = "jugador")
     private List<EstadisticasPartido> estadisticasPartido;
+
 }

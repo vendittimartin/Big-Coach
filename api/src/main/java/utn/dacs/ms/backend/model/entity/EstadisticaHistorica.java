@@ -3,6 +3,7 @@ package utn.dacs.ms.backend.model.entity;
 import javax.persistence.*;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Data
@@ -19,6 +20,7 @@ public class EstadisticaHistorica {
     private Float robos;
     private Float tapones;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idJugador")
     private Jugador jugador;

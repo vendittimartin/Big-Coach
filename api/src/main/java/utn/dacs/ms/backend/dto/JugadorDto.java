@@ -3,7 +3,7 @@ package utn.dacs.ms.backend.dto;
 import lombok.Data;
 
 @Data
-public class JugadorDto {
+public class JugadorDTO {
 
     private Integer id;
     private String nombre;

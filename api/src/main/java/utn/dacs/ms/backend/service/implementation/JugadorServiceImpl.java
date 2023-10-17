@@ -39,7 +39,6 @@ public class JugadorServiceImpl implements JugadorService {
     public void delete(Long id) {
 
     }
-
     @Override
     public void delete(Integer id) {
         Optional<Jugador> jugador = getById(id);
@@ -66,4 +65,9 @@ public class JugadorServiceImpl implements JugadorService {
         return jugadorRepository.existsById(id);
     }
 
+    @Override
+    public List<Jugador> buscarPorNombre(String nombre){
+        nombre = nombre.trim().toUpperCase();
+        return jugadorRepository.buscarPorNombre(nombre);
+    }
 }
