@@ -1,0 +1,57 @@
+/* tabla.component.css */
+
+/* Estilo para la tabla */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #BA3B0A
+}
+
+/* Estilo para las celdas de encabezado */
+th {
+  padding: 16px 8px;
+  background-color: #BA3B0A; /* Color de fondo del encabezado */
+  text-align: left;
+  border-bottom: 2px solid #000;
+}
+
+/* Estilo para las celdas de datos */
+td {
+  padding: 8px;
+  background-color: #b55d3b;
+ /* border-bottom: 1px solid #000;*/
+}
+
+/* Estilo para filas alternas (alternar colores de fondo) 
+tr:nth-child(even) {
+  background-color: #D9D9D9;  Color de fondo para filas pares 
+
+}
+
+tr:nth-child(odd) {
+  background-color: #2e2d2d /* Color de fondo para filas impares 
+}*/
+/* Estilo para filas al pasar el mouse (hover) */
+/*tr:hover {
+  background-color: #d1d5db; /* Color de fondo al pasar el mouse 
+}*/
+/* Estilo para los controles de paginación 
+.pagination {
+  text-align: center;
+  margin-top: 14px;
+}
+*/
+.pagination {
+  background-color: #BA3B0A;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 2px;
+  cursor: pointer;
+}
+/*
+.pagination button:hover {
+  background-color: #D9D9D9;
+*/
+
