@@ -9,17 +9,6 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MiEquipoComponent } from './mi-equipo/mi-equipo.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MatButtonModule } from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import { MatPaginatorModule} from '@angular/material/paginator';
-import { MatTableModule} from '@angular/material/table';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MiModalComponent } from './mi-equipo/mi-modal/mi-modal.component';
-import { TablaJugadoresComponent } from './mi-equipo/tabla-jugadores/tabla-jugadores.component';
-import { TablaEquipoComponent } from './mi-equipo/tabla-equipo/tabla-equipo.component';
-
-
 
 
 @NgModule({
@@ -29,14 +18,7 @@ import { TablaEquipoComponent } from './mi-equipo/tabla-equipo/tabla-equipo.comp
     FormsModule,
     ReactiveFormsModule,
     CdkTableModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatDialogModule
+    MatButtonModule
   ],
   declarations: [
     EquiposComponent,
