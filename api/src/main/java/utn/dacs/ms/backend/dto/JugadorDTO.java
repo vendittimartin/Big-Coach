@@ -1,4 +1,5 @@
-cd 
+package utn.dacs.ms.backend.dto;
+
 import lombok.Data;
 
 @Data
