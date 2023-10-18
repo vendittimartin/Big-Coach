@@ -9,8 +9,6 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MiEquipoComponent } from './mi-equipo/mi-equipo.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
 
 
 @NgModule({
@@ -20,15 +18,17 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     CdkTableModule,
-    MatButtonModule,
-    MatIconModule
+    MatButtonModule
   ],
   declarations: [
     EquiposComponent,
     InicioComponent,
     RankingComponent,
     MiEquipoComponent,
-    PerfilComponent
+    PerfilComponent,
+    MiModalComponent,
+    TablaJugadoresComponent,
+    TablaEquipoComponent
   ]
 })
 export class MaterialComponentsModule { }
