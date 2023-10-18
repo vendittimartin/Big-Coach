@@ -11,6 +11,7 @@ import { FooterComponent } from 'src/app/layouts/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialComponentsModule } from './components/material.module';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { MaterialComponentsModule } from './components/material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    MatDialogModule
   ],
   providers: [
     {
