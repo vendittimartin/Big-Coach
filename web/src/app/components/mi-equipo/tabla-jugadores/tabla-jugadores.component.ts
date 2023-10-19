@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import { ModalService } from '../mi-modal/modal.service';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit, Component, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { ModalService } from '../../../shared/mi-modal/modal.service';
+import { MatTableDataSource } from '@angular/material/table';
 import { Jugador } from 'src/app/models/jugador';
 
 @Component({
@@ -9,12 +9,12 @@ import { Jugador } from 'src/app/models/jugador';
   templateUrl: './tabla-jugadores.component.html',
   styleUrls: ['./tabla-jugadores.component.css']
 })
-export class TablaJugadoresComponent implements AfterViewInit{
-  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.','Ast.', 'Reb.', 'Stl.', 'Blk.','Comprar'];
-  dataSource = new MatTableDataSource<Jugador>(ELEMENT_DATA);
+export class TablaJugadoresComponent implements AfterViewInit, OnChanges {
+  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.', 'Ast.', 'Reb.', 'Stl.', 'Blk.', 'Comprar'];
   filtroNombre: string = '';
   equipoUsuario: Jugador[] = [];
-
+  @Input() jugadoresEncontrados: Jugador[] = [];
+  dataSource = new MatTableDataSource<Jugador>(this.jugadoresEncontrados);
 
   constructor(private modalService: ModalService) {}
 
@@ -26,6 +26,12 @@ export class TablaJugadoresComponent implements AfterViewInit{
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['jugadoresEncontrados']) {
+      this.dataSource.data = this.jugadoresEncontrados;
+    }
+  }
+
   filtrarTabla() {
     this.dataSource.filter = this.filtroNombre.trim().toLowerCase();
   }
@@ -34,15 +40,3 @@ export class TablaJugadoresComponent implements AfterViewInit{
     this.modalService.abrirModal();
   }
 }
-
-const ELEMENT_DATA: Jugador[] = [
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Chris Pol', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Russell Westbrook', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-];
-

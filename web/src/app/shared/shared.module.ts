@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MenuItems } from './menu-items/menu-items';
 
 
 @NgModule({
@@ -8,7 +7,6 @@ import { MenuItems } from './menu-items/menu-items';
   exports: [
   ],
   providers: [
-    MenuItems
 ]
 })
 export class SharedModule { }

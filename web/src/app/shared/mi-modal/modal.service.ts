@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MiModalComponent } from '../mi-modal/mi-modal.component';
+import { MiModalComponent } from './mi-modal.component';
 
 
 @Injectable({
