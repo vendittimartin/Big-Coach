@@ -35,11 +35,15 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()
 				.authorizeRequests(authorize -> authorize
-						.antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+						/*.antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
 						.antMatchers("/metrics", "/metrics/**").permitAll()
 						.antMatchers("/ping","/conector/ping").permitAll()
 						.antMatchers("/version","/conector/version").permitAll()
-						.anyRequest().authenticated()
+						.antMatchers("/jugador","/backend/**").permitAll()
+						.antMatchers("/jugador","/backend/jugador").permitAll()
+						.antMatchers("/jugador/{nombre}","/backend/jugador/nombre?={nombre}").permitAll()
+						.anyRequest().authenticated()*/
+						.anyRequest().permitAll()
 				).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.oauth2ResourceServer(server -> server.jwt(jwt -> jwt

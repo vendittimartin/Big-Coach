@@ -45,6 +45,7 @@ public class CoachController {
         CoachDTO data = modelMapper.map(coach.get(), CoachDTO.class);
         return new ResponseEntity<CoachDTO>(data, HttpStatus.OK);
     }
+    
     @PostMapping("")
     public ResponseEntity<?> createCoach(@RequestBody CoachDTO coachDTO) {
         Optional<Coach> existingCoach = coachService.getById(coachDTO.getEmail());

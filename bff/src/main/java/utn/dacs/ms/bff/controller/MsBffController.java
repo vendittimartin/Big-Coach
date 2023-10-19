@@ -27,10 +27,6 @@ public class MsBffController {
     public BuildInfoDTO getPropuestas() {
         return apiConectorService.version();
     }
-    /*
-    @GetMapping("/reason")
-    public List<ReasonDTO> getMotivos() {
-    	return apiConectorService.getReason();
-    }*/
+
    
 }
