@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EquipoService {
-    Optional<Equipo> getById(Integer id);
+    List<Equipo> getByCoachId(String id);
 
     List<Equipo> getAll();
 

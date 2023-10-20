@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
 import utn.dacs.ms.bff.dto.CoachDTO;
+import utn.dacs.ms.bff.dto.EquipoDTO;
 import utn.dacs.ms.bff.dto.JugadorDTO;
 import utn.dacs.ms.bff.dto.JugadorEstadisticaDTO;
 import utn.dacs.ms.bff.service.MsApiBackendService;
@@ -41,6 +42,13 @@ public class BackendBffController {
     public ResponseEntity<?> createCoach(@RequestBody CoachDTO coachDTO) {
         return apiBackendService.createCoach(coachDTO);
     }
+
+    //Mapping Equipo
+    @GetMapping(value = "/equipo/{id}")
+    public List<EquipoDTO> getEquipoByCoach(@PathVariable(value = "id") String id) {
+        return apiBackendService.getEquipoByCoach(id);
+    }
+
 
 
 }

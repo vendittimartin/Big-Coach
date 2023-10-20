@@ -4,6 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import utn.dacs.ms.bff.dto.CoachDTO;
+import utn.dacs.ms.bff.dto.EquipoDTO;
 import utn.dacs.ms.bff.dto.JugadorDTO;
 import utn.dacs.ms.bff.dto.JugadorEstadisticaDTO;
 
@@ -27,4 +28,8 @@ public interface MsApiBackendClient {
     CoachDTO getCoachByID(@RequestParam String id);
     @PostMapping("/coach")
     ResponseEntity<?> createCoach(@RequestBody CoachDTO coachDTO);
+
+    @GetMapping("/equipo/{id}")
+    List<EquipoDTO> getEquipoByCoach(@RequestParam String id);
+
 }

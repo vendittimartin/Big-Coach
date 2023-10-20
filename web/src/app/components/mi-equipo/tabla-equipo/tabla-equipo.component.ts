@@ -1,6 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import { ModalService } from '../../../shared/mi-modal/modal.service';
+import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Jugador } from 'src/app/models/jugador';
 
@@ -9,14 +7,17 @@ import { Jugador } from 'src/app/models/jugador';
   templateUrl: './tabla-equipo.component.html',
   styleUrls: ['./tabla-equipo.component.css']
 })
-export class TablaEquipoComponent implements AfterViewInit{
-  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.'];
-  dataSource = new MatTableDataSource<Jugador>(ELEMENT_DATA);
+export class TablaEquipoComponent implements OnChanges{
+  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.'];
+  @Input() jugadores: Jugador[] = [];
+  dataSource = new MatTableDataSource<Jugador>(this.jugadores);
 
   constructor() {}
 
-  ngAfterViewInit() {
-   
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['jugadores']) {
+      this.dataSource.data = this.jugadores;
+    }
   }
   
 }

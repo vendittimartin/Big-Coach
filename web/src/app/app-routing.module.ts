@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'mi-equipo', component: MiEquipoComponent, canActivate:[AuthGuard]},
   { path: 'ranking', component: RankingComponent},
   { path: 'perfil', component: PerfilComponent, canActivate:[AuthGuard]},
+  { path: 'sobre-nosotros', component: InicioComponent},
   { path: '**', redirectTo: '' }
 ];
 

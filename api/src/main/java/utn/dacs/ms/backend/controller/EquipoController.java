@@ -38,13 +38,11 @@ public class EquipoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EquipoDTO> getById(@PathVariable(value = "id") Integer id) throws ResourceNotFoundException {
-        Optional<Equipo> equipo = equipoService.getById(id);
-
-        if (equipo.isEmpty()) {
-            throw new ResourceNotFoundException("");
-        }
-        EquipoDTO data = modelMapper.map(equipo.get(), EquipoDTO.class);
-        return new ResponseEntity<EquipoDTO>(data, HttpStatus.OK);
+    public ResponseEntity<List<EquipoDTO>> getById(@PathVariable(value = "id") String id){
+        List<Equipo> equipos = equipoService.getByCoachId(id);
+        List<EquipoDTO> data = equipos.stream().map(equipo
+                        -> modelMapper.map(equipo, EquipoDTO.class))
+                .collect(Collectors.toList());
+        return new ResponseEntity<List<EquipoDTO>>(data, HttpStatus.OK);
     }
 }

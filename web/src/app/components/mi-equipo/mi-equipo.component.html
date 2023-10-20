@@ -1,5 +1,28 @@
 <div class="min-h-max">
-  <div class="pt-[5rem] flex flex-col justify-center items-center space-y-4" *ngIf="this.equipoUsuario.length < 5">
+  <div class="w-screen pt-[5rem] flex flex-col justify-center items-center space-y-4">
+    <div class="bg-[#dcdcdc] w-1/4 min-w-[344px] p-10 rounded-lg shadow-lg text-center border border-4 border-[#ff5100]">
+      <div class="text-center mb-4">
+        <h3 class="text-4xl font-bold text-black pb-5">Crea tu club</h3>
+      </div>
+
+  <form>
+        <input id="manager" name="manager" type="text" autocomplete="manager" required [(ngModel)]="coachData.nombre"
+        class="mb-5 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
+        placeholder="Nombre de Manager">
+        <input id="club" name="club" type="text" autocomplete="club" required [(ngModel)]="coachData.club"
+        class="mb-9 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
+        placeholder="Nombre del Club">
+
+      <button (click)="registrarCoach()"
+      type="submit"
+      class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#ff5100] hover:bg-[#ff3100] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff5100]">
+      Confirmar
+    </button>
+  </form>
+    </div>
+  </div>
+
+  <div class="pt-[5rem] flex flex-col justify-center items-center space-y-4" *ngIf="armarEquipo">
       <p class="text-[#ff5100] font-semibold text-2xl">Completa tu equipo</p>
       <div class="bg-[#f5f5f5] border-2 border-[#ff5100] pl-[3rem] pr-[3rem] rounded-lg shadow-lg text-center flex items-center justify-center h-12">
             <input class="bg-[#f5f5f5] focus:border-none focus:outline-none mr-10" matInput placeholder="Ej. LeBron James" 
@@ -14,21 +37,11 @@
           </button>
         </div>      
         <app-tabla-jugadores [jugadoresEncontrados]="jugadoresEncontrados" *ngIf="this.listarTabla"></app-tabla-jugadores>
-        <p class="text-[#ff5100] font-semibold text-2xl pt-5">Tus jugadores</p>
-        <app-tabla-equipo></app-tabla-equipo>
   </div>
 
-  <div class="pt-[5rem] flex flex-col justify-center items-center space-y-4" *ngIf="this.equipoUsuario.length === 5">
-    <div class="flex flex-row">
-      <p class="text-[#ff5100] font-semibold text-2xl">Nombre del equipo</p> <!-- {{this.usuario.nombreEquipo}} -->
-      <p class="ml-10 text-[#ff5100] font-semibold text-2xl"> Puesto:</p> <!-- {{this.usuario.posicion}} -->
-      <p class="ml-2 text-amber-300 font-semibold text-2xl">1</p>    <!-- 1er puesto oro -->
-      <p class="ml-2 text-blue-200 font-semibold text-2xl">1</p>  <!-- 2do puesto plata -->
-      <p class="ml-2 text-amber-600 font-semibold text-2xl">1</p>   <!-- 3er puesto bronce -->
-      <p class="ml-2 text-[#ff5100] font-semibold text-2xl">1</p>   <!-- otro --> 
-      </div>
+  <div class="pt-[5rem] flex flex-col justify-center items-center space-y-4 pb-[5rem]" *ngIf="this.listarJugadoresUsuario">
       <p class="text-[#ff5100] font-semibold text-2xl">Tus jugadores</p>
-      <app-tabla-equipo></app-tabla-equipo>
+      <app-tabla-equipo [jugadores]="this.equipoUsuario[0].jugadores"></app-tabla-equipo>
   </div>
 
 </div>

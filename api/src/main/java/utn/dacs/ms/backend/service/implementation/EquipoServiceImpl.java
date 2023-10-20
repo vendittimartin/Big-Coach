@@ -15,8 +15,8 @@ public class EquipoServiceImpl implements EquipoService {
     private EquipoRepository equipoRepository;
 
     @Override
-    public Optional<Equipo> getById(Integer id) {
-        return equipoRepository.findById(id);
+    public List<Equipo> getByCoachId(String id) {
+        return equipoRepository.getByCoachId(id);
     }
     @Override
     public List<Equipo> getAll() {
@@ -28,6 +28,11 @@ public class EquipoServiceImpl implements EquipoService {
         Optional<Equipo> equipo = getById(id);
         equipoRepository.delete(equipo.get());
     }
+
+    private Optional<Equipo> getById(Integer id) {
+        return equipoRepository.findById(id);
+    }
+
     @Override
     public Equipo save(Equipo entity) {
         return equipoRepository.save(entity);
