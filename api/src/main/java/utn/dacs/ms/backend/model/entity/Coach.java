@@ -18,4 +18,8 @@ public class Coach {
     private String club;
     @OneToMany(mappedBy = "coach")
     private List<Equipo> equipos;
+
+    public String getEmail() {
+        return this.email;
+    }
 }

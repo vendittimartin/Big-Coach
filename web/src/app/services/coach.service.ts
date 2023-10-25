@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -23,17 +23,11 @@ export class CoachService {
     }
 
     createCoach(coach: Coach): Observable<Coach> { 
-        const url = `${environment.backendForFrontendUrl}/backend/coach`;
-        console.log(url);
-        return this.http.post<Coach>(url, coach, this.headers);
-    }
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    get headers() {
-        return {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
+        const url = `${environment.backendForFrontendUrl}/backend/coach`;
+
+        return this.http.post<Coach>(url, coach, {headers});
     }
 }
 

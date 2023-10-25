@@ -13,6 +13,7 @@ public interface EquipoService {
     void delete(Integer id);
 
     Equipo save(Equipo entity);
-
     Boolean existById(Integer id);
+    Optional<Equipo> getById(Integer id);
+    public Equipo agregarJugadorAEquipo(Integer idEquipo, Integer idJugador);
 }

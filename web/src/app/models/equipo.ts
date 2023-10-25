@@ -1,7 +1,7 @@
 import { Jugador } from "./jugador"
 
 export interface Equipo {
-    idquipo:number, 
+    idEquipo:number, 
     temporada: number, 
     puntajeTotal: number, 
     jugadores: Jugador[]

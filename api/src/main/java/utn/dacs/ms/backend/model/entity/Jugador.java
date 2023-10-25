@@ -30,4 +30,11 @@ public class Jugador {
     @OneToMany(mappedBy = "jugador")
     private List<EstadisticasPartido> estadisticasPartido;
 
+    public Object getPosicion() {
+        return this.posicion;
+    }
+
+    public List<Equipo> getEquipos() {
+        return this.equipos;
+    }
 }

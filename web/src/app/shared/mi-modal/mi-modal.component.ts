@@ -1,21 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ModalService } from './modal.service';
-import { MatDialogRef } from '@angular/material/dialog';
-
 @Component({
-  selector: 'app-mi-componente',
+  selector: 'app-modal',
   templateUrl: './mi-modal.component.html',
   styleUrls: ['./mi-modal.component.css']
 })
-export class MiModalComponent {
-  constructor(private modalService: ModalService, private dialogRef: MatDialogRef<MiModalComponent>) {}
+export class ModalComponent {
+  visible = false;
+  @Input() idEquipo: number | undefined;
+  @Input() idJugador: number | undefined;
 
-  abrirMiModal() {
-    this.modalService.abrirModal();
+  constructor(private modalService: ModalService) {
+    this.modalService.abrirModal$.subscribe(() => {
+      this.visible = true;
+
+      this.modalService.cerrarModal$.subscribe(() => {
+        this.visible = false;
+      });
+    });
   }
 
-  cerrarModal(): void {
-    this.dialogRef.close();
+  confirmarModal() {
+    
   }
-  
+
+  cerrarModal() {
+    this.visible = false;
+  }
 }
+
+

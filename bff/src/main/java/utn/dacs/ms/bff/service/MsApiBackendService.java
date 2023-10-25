@@ -56,12 +56,16 @@ public class MsApiBackendService {
         }
     }
 
-        public List<EquipoDTO> getEquipoByCoach(String id) {
+    public List<EquipoDTO> getEquipoByCoach(String id) {
         try {
             return this.msApiBackendClient.getEquipoByCoach(id);
         } catch (Exception e) {
             log.error("Error producido al solicitar un recurso a /backend/equipo/id", e);
             throw new BffException(ErrorEnum.ERROR_API);
         }
+    }
+
+    public ResponseEntity<EquipoDTO> addJugadorAEquipo(Integer idEquipo, Integer idJugador){
+            return this.msApiBackendClient.addJugador(idEquipo,idJugador);
     }
 }

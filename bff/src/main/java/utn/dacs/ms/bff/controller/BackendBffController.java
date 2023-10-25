@@ -2,6 +2,7 @@ package utn.dacs.ms.bff.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +50,8 @@ public class BackendBffController {
         return apiBackendService.getEquipoByCoach(id);
     }
 
-
-
+    @GetMapping(value = "equipo/{idEquipo}/agregarJugador/{idJugador}")
+    public ResponseEntity<EquipoDTO> addJugadorAEquipo(@PathVariable("idEquipo") Integer idEquipo, @PathVariable("idJugador") Integer idJugador) {
+        return apiBackendService.addJugadorAEquipo(idEquipo, idJugador);
+    }
 }

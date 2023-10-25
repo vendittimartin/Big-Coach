@@ -22,6 +22,15 @@ export class EquipoService {
                 map((response: any) => response as Equipo[])
               );
     }
+
+    addJugadorAEquipo(idEquipo: number, idJugador: number){
+        const url = `${environment.backendForFrontendUrl}/backend/equipo/${idEquipo}/agregarJugador/${idJugador}`;
+
+        return this.http
+            .get(url).pipe(
+                map((response: any) => response as Equipo[])
+              );
+    }
 }
 
 

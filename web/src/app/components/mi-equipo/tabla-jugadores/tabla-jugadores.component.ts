@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ModalService } from '../../../shared/mi-modal/modal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Jugador } from 'src/app/models/jugador';
+import { Equipo } from 'src/app/models/equipo';
 
 @Component({
   selector: 'app-tabla-jugadores',
@@ -12,7 +13,7 @@ import { Jugador } from 'src/app/models/jugador';
 export class TablaJugadoresComponent implements AfterViewInit, OnChanges {
   displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.', 'Ast.', 'Reb.', 'Stl.', 'Blk.', 'Comprar'];
   filtroNombre: string = '';
-  equipoUsuario: Jugador[] = [];
+  @Input() equipoUsuario: Equipo[] = [];
   @Input() jugadoresEncontrados: Jugador[] = [];
   dataSource = new MatTableDataSource<Jugador>(this.jugadoresEncontrados);
 
@@ -36,7 +37,7 @@ export class TablaJugadoresComponent implements AfterViewInit, OnChanges {
     this.dataSource.filter = this.filtroNombre.trim().toLowerCase();
   }
 
-  abrirModal() {
-    this.modalService.abrirModal();
+  abrirModal(idJugador: number) {
+    this.modalService.abrirModal({ idEquipo: this.equipoUsuario[0].idEquipo, idJugador: idJugador });
   }
 }
