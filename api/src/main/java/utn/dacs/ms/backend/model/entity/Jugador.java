@@ -37,4 +37,8 @@ public class Jugador {
     public List<Equipo> getEquipos() {
         return this.equipos;
     }
+
+    public String getEquipoNBA() {
+        return this.equipoNBA;
+    }
 }

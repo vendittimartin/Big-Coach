@@ -61,11 +61,15 @@ public class EquipoServiceImpl implements EquipoService {
                 Jugador jugador = optionalJugador.get();
                 if (!jugadores.contains(jugador)) {
                     if (jugadores.stream().noneMatch(j -> j.getPosicion().equals(jugador.getPosicion()))) {
-                        jugadores.add(jugador);
-                        jugador.getEquipos().add(equipo);
+                        if (jugadores.stream().noneMatch(j -> j.getEquipoNBA().equals(jugador.getEquipoNBA()))) {
+                            jugadores.add(jugador);
+                            jugador.getEquipos().add(equipo);
 
-                        save(equipo);
-                        jugadorService.save(jugador);
+                            save(equipo);
+                            jugadorService.save(jugador);
+                        } else {
+                            return null;
+                        }
                     } else {
                         return null;
                     }
