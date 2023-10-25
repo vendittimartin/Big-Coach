@@ -9,6 +9,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MiEquipoComponent } from './mi-equipo/mi-equipo.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MatButtonModule } from '@angular/material/button';
+import { InicioLogComponent } from './inicio-log/inicio-log.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     InicioComponent,
     RankingComponent,
     MiEquipoComponent,
-    PerfilComponent
+    PerfilComponent,
+    InicioLogComponent
   ]
 })
 export class MaterialComponentsModule { }
