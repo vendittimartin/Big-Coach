@@ -7,7 +7,6 @@ table {
   border-radius: 4px;
   background-color: #BA3B0A
 }
-
 /* Estilo para las celdas de encabezado */
 th {
   padding: 16px 8px;
@@ -23,25 +22,12 @@ td {
  /* border-bottom: 1px solid #000;*/
 }
 
-/* Estilo para filas alternas (alternar colores de fondo) 
-tr:nth-child(even) {
-  background-color: #D9D9D9;  Color de fondo para filas pares 
 
-}
+/* Estilo para filas al pasar el mouse (hover) 
+td:hover {
+  background-color: #bf4b1d; 
+}*/
 
-tr:nth-child(odd) {
-  background-color: #2e2d2d /* Color de fondo para filas impares 
-}*/
-/* Estilo para filas al pasar el mouse (hover) */
-/*tr:hover {
-  background-color: #d1d5db; /* Color de fondo al pasar el mouse 
-}*/
-/* Estilo para los controles de paginación 
-.pagination {
-  text-align: center;
-  margin-top: 14px;
-}
-*/
 .pagination {
   background-color: #BA3B0A;
   color: white;
@@ -55,3 +41,6 @@ tr:nth-child(odd) {
   background-color: #D9D9D9;
 */
 
+.selected-row {
+  border: 2px solid rgb(248, 150, 84); /* Establece el estilo del borde según tus preferencias */
+}

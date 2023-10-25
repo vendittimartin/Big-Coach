@@ -1,65 +1,54 @@
-<!--
-<table class="min-w-full">
-  <thead>
-      <th class="mat-elevation-z8 px-1 py-3 bg-gray-200 text-left">POS</th>
-      <th class="mat-elevation-z8 px-6 py-3 bg-gray-200 text-left">Equipo</th>
-      <th class="mat-elevation-z8 px-6 py-3 bg-gray-200 text-left">Puntos</th>
-      <th class="mat-elevation-z8 px-6 py-3 bg-gray-200 text-left">Manager</th>
-  </thead>
-  <tbody
-     *ngFor="let usuario of usersToDisplay" class="even:bg-gray-100">
-      <td class="px-6 py-4">{{ usuario.POS }}</td>
-      <td class="px-6 py-4">{{ usuario.Equipo }}</td>
-      <td class="px-6 py-4">{{ usuario.Puntos }}</td>
-      <td class="px-6 py-4">{{ usuario.Manager }}</td>
-  </tbody>  
-</table>
-<div class="pagination">
-  <label for="pageSizeSelect">Usuarios por página:</label>
-<select id="pageSizeSelect" [(ngModel)]="pageSize">
-  <option value="5">5</option>
-  <option value="10">10</option>
-</select>
-<button (click)="changePage(1)">Ir a la primera página</button>
-  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
-  <span>Página {{ currentPage }}</span>
-  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage * pageSize >= totalItems">Siguiente</button>
-</div>
--->
-
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
-    <!-- Position Column -->
+    <!-- POS Column -->
     <ng-container matColumnDef="POS">
       <th mat-header-cell *matHeaderCellDef> No. </th>
       <td mat-cell *matCellDef="let element"> {{element.POS}} </td>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- Equipo Column -->
     <ng-container matColumnDef="Equipo">
       <th mat-header-cell *matHeaderCellDef> Equipo </th>
       <td mat-cell *matCellDef="let element"> {{element.Equipo}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Puntos Column -->
     <ng-container matColumnDef="Puntos">
       <th mat-header-cell *matHeaderCellDef> Puntos </th>
       <td mat-cell *matCellDef="let element"> {{element.Puntos}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Manager Column -->
     <ng-container matColumnDef="Manager">
       <th mat-header-cell *matHeaderCellDef> Manager </th>
       <td mat-cell *matCellDef="let element"> {{element.Manager}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns ;"
+    [ngClass]="{ 'selected-row': isRowSelected(element) }"></tr>
   </table>
 
   <mat-paginator class="pagination"
                   [pageSizeOptions]="[5, 10]"
                  showFirstLastButtons
-                 aria-label="Select page of periodic elements">
+                 aria-label="Select page of teams">
   </mat-paginator>
+  <div class="md:w-1/2 lg:w-2/5 text-left  ">
+    <table>
+      <label class=" w-full p-2 mt-2">Tu Equipo</label>
+      <tr>
+        <td>No.</td>
+        <td>Equipo</td>
+        <td>Puntos</td>
+        <td>Manager</td>
+      </tr>
+      <tr>
+        <td>{{ tuEquipo?.POS }}</td>
+        <td>{{ tuEquipo?.Equipo }}</td>
+        <td>{{ tuEquipo?.Puntos }}</td>
+        <td>{{ tuEquipo?.Manager }}</td>
+      </tr>
+    </table>
+  </div>
 </div>

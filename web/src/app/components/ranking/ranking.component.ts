@@ -14,8 +14,17 @@ export class RankingComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  tuEquipo: usuarios | undefined;
+  
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+
+    this.tuEquipo = ELEMENT_DATA[6];
+  }
+  //Para encontrar el equipo en la tabla
+  isRowSelected(element: usuarios): boolean {
+    return this.tuEquipo !== null && this.tuEquipo?.POS === element.POS;
   }
 }
 
@@ -60,19 +69,5 @@ export interface usuarios {
     { POS: 31, Equipo: 'Baltimore Cornetas', Puntos: '100', Manager: 'BTK' },
     
   ];
-  /* pageSize = 10; // Tamaño de página
-  currentPage = 1; // Página actual
-  totalItems = this.usuarios.length; // Total de elementos
-
-  // Método para obtener los usuarios a mostrar en la página actual
-  get usersToDisplay() {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    return this.usuarios.slice(startIndex, endIndex);
-  }
-
-  // Método para cambiar de página
-  changePage(newPage: number) {
-    this.currentPage = newPage;
-  }*/
+ 
 
