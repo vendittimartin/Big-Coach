@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { ModalService } from '../../../shared/mi-modal/modal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Jugador } from 'src/app/models/jugador';
 import { Equipo } from 'src/app/models/equipo';
@@ -13,11 +12,14 @@ import { Equipo } from 'src/app/models/equipo';
 export class TablaJugadoresComponent implements AfterViewInit, OnChanges {
   displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.', 'Ast.', 'Reb.', 'Stl.', 'Blk.', 'Comprar'];
   filtroNombre: string = '';
+  modalOpen: boolean = false;
   @Input() equipoUsuario: Equipo[] = [];
   @Input() jugadoresEncontrados: Jugador[] = [];
   dataSource = new MatTableDataSource<Jugador>(this.jugadoresEncontrados);
+  @Output() confirmBuy = new EventEmitter<Jugador>();
+  selectedPlayer: Jugador | null = null;
 
-  constructor(private modalService: ModalService) {}
+  constructor() {}
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
@@ -37,7 +39,17 @@ export class TablaJugadoresComponent implements AfterViewInit, OnChanges {
     this.dataSource.filter = this.filtroNombre.trim().toLowerCase();
   }
 
-  abrirModal(idJugador: number) {
-    this.modalService.abrirModal({ idEquipo: this.equipoUsuario[0].idEquipo, idJugador: idJugador });
+  abrirModal(jugador: any): void{
+    this.selectedPlayer = jugador;
+    this.modalOpen = true;
   }
+
+  handlePurchaseConfirmation(isConfirmed: boolean): void {
+    if (isConfirmed && this.selectedPlayer !== null) {
+      this.confirmBuy.emit(this.selectedPlayer);
+      this.modalOpen = false;
+    } else {
+      this.modalOpen = false;
+    }
+  } 
 }

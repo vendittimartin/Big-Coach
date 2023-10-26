@@ -9,12 +9,13 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MiEquipoComponent } from './mi-equipo/mi-equipo.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MatButtonModule } from '@angular/material/button';
-import { ModalComponent } from '../shared/mi-modal/mi-modal.component';
+import { MiModalComponent } from './mi-equipo/mi-modal/mi-modal.component';
 import { TablaJugadoresComponent } from './mi-equipo/tabla-jugadores/tabla-jugadores.component';
 import { TablaEquipoComponent } from './mi-equipo/tabla-equipo/tabla-equipo.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { SobreElJuegoComponent } from './sobre-el-juego/sobre-el-juego.component';
 
 
 
@@ -36,9 +37,10 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     RankingComponent,
     MiEquipoComponent,
     PerfilComponent,
-    ModalComponent,
+    MiModalComponent,
     TablaJugadoresComponent,
-    TablaEquipoComponent
+    TablaEquipoComponent,
+    SobreElJuegoComponent
   ]
 })
 export class MaterialComponentsModule { }

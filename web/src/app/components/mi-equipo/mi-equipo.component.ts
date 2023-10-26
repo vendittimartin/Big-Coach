@@ -7,6 +7,8 @@ import { EquipoService } from 'src/app/services/equipo.service';
 import { Equipo } from 'src/app/models/equipo';
 import { CoachService } from 'src/app/services/coach.service';
 import { Coach } from 'src/app/models/coach';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-mi-equipo',
   templateUrl: './mi-equipo.component.html',
@@ -23,7 +25,7 @@ export class MiEquipoComponent implements AfterViewInit{
   listarJugadoresUsuario: boolean = false;
   coachNuevo: boolean = false;
   error: boolean = false;
-  errorAlBuscar: boolean = false;
+  loading: boolean = false;
   constructor(private coachService: CoachService, private jugadorService: JugadorService, private equipoService: EquipoService, private readonly keycloak: KeycloakService) {}
 
   async ngAfterViewInit() {
@@ -37,8 +39,8 @@ export class MiEquipoComponent implements AfterViewInit{
         if (this.coachData.club !== ''){
         this.equipoService.getEquipoByCoach(this.coachData.email).subscribe((equipo) => {
           this.equipoUsuario = equipo;
-          console.log(equipo);
-          if (this.equipoUsuario[0].jugadores.length < 5){
+          if (this.equipoUsuario[0].jugadores !== undefined){
+            if (this.equipoUsuario[0].jugadores.length < 5){
               this.armarEquipo = true;
               this.listarJugadoresUsuario = true;
             }
@@ -46,6 +48,7 @@ export class MiEquipoComponent implements AfterViewInit{
               this.armarEquipo = false;
               this.listarJugadoresUsuario = true;
             }
+          }
         });
       } else {
         this.armarEquipo = false;
@@ -59,14 +62,19 @@ export class MiEquipoComponent implements AfterViewInit{
 
   onButtonClick(){
     if (this.nombreJugador.length >= 3){
+    this.loading = true;
     this.jugadorService.getJugadorByNombre(this.nombreJugador).subscribe((jugadores) => {
-      this.errorAlBuscar = false;
       this.jugadoresEncontrados = jugadores as Jugador[];
       this.listarTabla = true;
-      console.log(jugadores);
+      this.loading = false;
     });
   } else {
-    this.errorAlBuscar = true;
+    Swal.fire({
+      icon: 'error',
+      text: 'Debes ingresar al menos 3 letras para realizar la búsqueda',
+      showConfirmButton: false,
+      timer: 2500
+    })
   }
   }
 
@@ -78,12 +86,49 @@ export class MiEquipoComponent implements AfterViewInit{
         this.coachNuevo = false;
         this.armarEquipo = true;
         this.listarJugadoresUsuario = true;
+        Swal.fire({
+          icon: 'success',
+          title: 'Genial!',
+          text: 'Es hora de armar tu equipo y hacerte con la victoria!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
-      (error) => console.log(error)
+      (error) => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Intentalo nuevamente!'
+      })
     )}
     else {
-      this.error = true;
+      Swal.fire({
+        icon: 'error',
+        text: 'Por favor complete todos los campos',
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
+  }
+
+  handleConfirmationStatus(selectedPlayer: Jugador): void {
+      this.equipoService.addJugadorAEquipo(this.equipoUsuario[0].idEquipo,selectedPlayer.id).subscribe(data => {
+        const updatedJugadores = [...this.equipoUsuario[0].jugadores, selectedPlayer]; 
+        this.equipoUsuario = [{ ...this.equipoUsuario[0], jugadores: updatedJugadores }];
+        if(this.equipoUsuario[0].jugadores.length === 5){
+          this.armarEquipo = false;
+        }
+        Swal.fire({
+          icon: 'success',
+          title: 'Genial!',
+          text: 'La compra se efectuó correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }, err => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Revisa las reglas e intentalo nuevamente!'
+      }))
   }
 
 }

@@ -1,0 +1,27 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  .ball {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: relative;
+    animation: bounce 1s infinite;
+    background-image: url('../../../assets/img/pelota-basket.png');
+    background-size: cover;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-30px); /* Altura del bote */
+    }
+  }
+  

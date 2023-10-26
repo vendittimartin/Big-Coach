@@ -4,6 +4,7 @@ import { KeycloakProfile } from 'keycloak-js';
 import { Router } from '@angular/router';
 import { Coach } from 'src/app/models/coach';
 import { CoachService } from 'src/app/services/coach.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -52,8 +53,19 @@ export class PerfilComponent implements AfterViewInit{
       (response) =>  {
         this.coachNuevo = false;
         this.renderPerfil = true;
+        Swal.fire({
+          icon: 'success',
+          title: 'Genial!',
+          text: 'Es hora de armar tu equipo y hacerte con la victoria!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
-      (error) => console.log(error)
+      (error) => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Intentalo nuevamente!'
+      })
     )}
     else {
       this.error = true;
