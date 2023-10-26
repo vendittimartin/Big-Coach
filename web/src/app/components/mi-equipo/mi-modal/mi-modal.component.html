@@ -1,13 +1,30 @@
-<div class="fixed inset-0 flex items-center justify-center z-50">
-    <div class="bg-white rounded-md p-6 w-full max-w-md">
-      <h2 class="text-xl font-semibold mb-4 text-center">Confirmar compra</h2>
-      <p class="text-gray-700 mb-4 text-center">¿Estás seguro de que deseas confirmar la compra?</p>
-      <div class="flex justify-center space-x-4 mt-4">
-        <button class="bg-[#ff5100] hover:bg-[#ff3100] text-white px-4 py-2 rounded focus:outline-none"
-          >Confirmar</button>
-        <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded focus:outline-none"
-          (click)="cerrarModal()">Cancelar</button>
-      </div>
+<div class="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center">
+  <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+    <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+  </div>
+
+  <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+|
+  <div class="inline-block align-middle bg-white rounded-lg text-center overflow-hidden shadow-xl transform transition-all max-w-md w-full">
+    <div class="bg-white px-4 pb-3 pt-5">
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Confirmar compra</h3>
+      <p class="text-sm text-gray-700 mb-4">¿Estás seguro de que deseas fichar a este jugador?</p>
+    </div>
+    <div class="bg-gray-50 px-4 flex justify-center items-center pb-5">
+      <button
+        type="button"
+        class="inline-block bg-[#ff5100] hover:bg-[#ff3100] text-white font-medium py-2 px-4 rounded-md mr-3"
+        (click)="confirmPurchase(true)"
+      >
+        Confirmar
+      </button>
+      <button
+        type="button"
+        class="inline-block bg-white text-gray-700 font-medium py-2 px-4 rounded-md border border-gray-300 hover:bg-gray-100"
+        (click)="confirmPurchase(false)"
+      >
+        Cancelar
+      </button>
     </div>
   </div>
-  
+</div>

@@ -15,6 +15,8 @@ import { TablaEquipoComponent } from './mi-equipo/tabla-equipo/tabla-equipo.comp
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { SobreElJuegoComponent } from './sobre-el-juego/sobre-el-juego.component';
+
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     PerfilComponent,
     MiModalComponent,
     TablaJugadoresComponent,
-    TablaEquipoComponent
+    TablaEquipoComponent,
+    SobreElJuegoComponent
   ]
 })
 export class MaterialComponentsModule { }

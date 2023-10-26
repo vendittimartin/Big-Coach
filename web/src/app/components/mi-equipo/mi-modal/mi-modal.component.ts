@@ -1,21 +1,18 @@
-import { Component } from '@angular/core';
-import { ModalService } from './modal.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-mi-componente',
+  selector: 'app-modal',
   templateUrl: './mi-modal.component.html',
   styleUrls: ['./mi-modal.component.css']
 })
 export class MiModalComponent {
-  constructor(private modalService: ModalService, private dialogRef: MatDialogRef<MiModalComponent>) {}
+  @Output() purchaseConfirmed = new EventEmitter<boolean>();
 
-  abrirMiModal() {
-    this.modalService.abrirModal();
+  confirmPurchase(isConfirmed: boolean): void {
+    this.purchaseConfirmed.emit(isConfirmed);
   }
-
-  cerrarModal(): void {
-    this.dialogRef.close();
-  }
-  
 }
+
+
+
+

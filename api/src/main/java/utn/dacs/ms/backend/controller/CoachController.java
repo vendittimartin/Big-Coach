@@ -1,10 +1,10 @@
 package utn.dacs.ms.backend.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.nimbusds.oauth2.sdk.ErrorResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import utn.dacs.ms.backend.dto.CoachDTO;
 import utn.dacs.ms.backend.exceptions.ResourceNotFoundException;
 import utn.dacs.ms.backend.model.entity.Coach;
+import utn.dacs.ms.backend.model.entity.Equipo;
 import utn.dacs.ms.backend.service.CoachService;
+import utn.dacs.ms.backend.service.EquipoService;
 
 @RestController
 @RequestMapping(value = "/coach")
@@ -22,6 +24,9 @@ public class CoachController {
 
     @Autowired
     private CoachService coachService;
+
+    @Autowired
+    private EquipoService equipoService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -54,6 +59,8 @@ public class CoachController {
         } else {
             Coach coach = modelMapper.map(coachDTO, Coach.class);
             Coach newCoach = coachService.save(coach);
+            Equipo equipo = new Equipo(newCoach);
+            equipoService.save(equipo);
             CoachDTO createdCoachDTO = modelMapper.map(newCoach, CoachDTO.class);
             return new ResponseEntity<>(createdCoachDTO, HttpStatus.CREATED);
         }

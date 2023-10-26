@@ -1,10 +1,8 @@
+import {EstadisticaHistorica} from './estadisticaHistorica'
 export interface Jugador {
-    Nombre:string, 
-    Equipo: string, 
-    Posicion: string, 
-    Puntos: number, 
-    Asistencias: number, 
-    Rebotes: number, 
-    Robos: number, 
-    Tapas: number
+    id: number;
+    nombre:string, 
+    equipoNBA: string, 
+    posicion: string, 
+    estadisticaHistorica: EstadisticaHistorica
   }

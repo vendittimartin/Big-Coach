@@ -1,22 +1,25 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import { ModalService } from '../mi-modal/modal.service';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit, Component, ViewChild, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Jugador } from 'src/app/models/jugador';
+import { Equipo } from 'src/app/models/equipo';
 
 @Component({
   selector: 'app-tabla-jugadores',
   templateUrl: './tabla-jugadores.component.html',
   styleUrls: ['./tabla-jugadores.component.css']
 })
-export class TablaJugadoresComponent implements AfterViewInit{
-  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.','Ast.', 'Reb.', 'Stl.', 'Blk.','Comprar'];
-  dataSource = new MatTableDataSource<Jugador>(ELEMENT_DATA);
+export class TablaJugadoresComponent implements AfterViewInit, OnChanges {
+  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.', 'Ast.', 'Reb.', 'Stl.', 'Blk.', 'Comprar'];
   filtroNombre: string = '';
-  equipoUsuario: Jugador[] = [];
+  modalOpen: boolean = false;
+  @Input() equipoUsuario: Equipo[] = [];
+  @Input() jugadoresEncontrados: Jugador[] = [];
+  dataSource = new MatTableDataSource<Jugador>(this.jugadoresEncontrados);
+  @Output() confirmBuy = new EventEmitter<Jugador>();
+  selectedPlayer: Jugador | null = null;
 
-
-  constructor(private modalService: ModalService) {}
+  constructor() {}
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
@@ -26,23 +29,27 @@ export class TablaJugadoresComponent implements AfterViewInit{
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['jugadoresEncontrados']) {
+      this.dataSource.data = this.jugadoresEncontrados;
+    }
+  }
+
   filtrarTabla() {
     this.dataSource.filter = this.filtroNombre.trim().toLowerCase();
   }
 
-  abrirModal() {
-    this.modalService.abrirModal();
+  abrirModal(jugador: any): void{
+    this.selectedPlayer = jugador;
+    this.modalOpen = true;
   }
+
+  handlePurchaseConfirmation(isConfirmed: boolean): void {
+    if (isConfirmed && this.selectedPlayer !== null) {
+      this.confirmBuy.emit(this.selectedPlayer);
+      this.modalOpen = false;
+    } else {
+      this.modalOpen = false;
+    }
+  } 
 }
-
-const ELEMENT_DATA: Jugador[] = [
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Chris Pol', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Russell Westbrook', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-];
-

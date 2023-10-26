@@ -3,48 +3,48 @@
 
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Nombre </th>
-        <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
       </ng-container>
   
       <ng-container matColumnDef="Equipo">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Equipo </th>
-        <td mat-cell *matCellDef="let element"> {{element.Equipo}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.equipoNBA}} </td>
       </ng-container>
   
       <ng-container matColumnDef="Pos.">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Pos. </th>
-        <td mat-cell *matCellDef="let element"> {{element.Posicion}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.posicion}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Pts.">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Pts. </th>
-        <td mat-cell *matCellDef="let element"> {{element.Puntos}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estadisticaHistorica[0].puntos}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Ast.">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Ast. </th>
-        <td mat-cell *matCellDef="let element"> {{element.Asistencias}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estadisticaHistorica[0].asistencias}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Reb.">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Reb. </th>
-        <td mat-cell *matCellDef="let element"> {{element.Rebotes}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estadisticaHistorica[0].rebotes}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Blk.">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Blk. </th>
-        <td mat-cell *matCellDef="let element"> {{element.Tapas}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estadisticaHistorica[0].tapones}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Stl.">
         <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Stl. </th>
-        <td mat-cell *matCellDef="let element"> {{element.Robos}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estadisticaHistorica[0].robos}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Comprar">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element"> <button class="bg-[#ff5100] hover:bg-[#ff3100] text-white px-4 py-2 rounded focus:outline-none"
-           (click)="abrirModal()"> Comprar</button> </td>
+           (click)="abrirModal(element)"> Comprar</button> </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -56,3 +56,5 @@
                 [pageSizeOptions]="[5, 10, 20]">
     </mat-paginator>
 </div>
+
+<app-modal *ngIf="modalOpen" (purchaseConfirmed)="handlePurchaseConfirmation($event)"></app-modal> 

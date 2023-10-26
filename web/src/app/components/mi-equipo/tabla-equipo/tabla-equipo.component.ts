@@ -1,6 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import { ModalService } from '../mi-modal/modal.service';
+import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Jugador } from 'src/app/models/jugador';
 
@@ -9,24 +7,20 @@ import { Jugador } from 'src/app/models/jugador';
   templateUrl: './tabla-equipo.component.html',
   styleUrls: ['./tabla-equipo.component.css']
 })
-export class TablaEquipoComponent implements AfterViewInit{
-  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.', 'Pts.'];
-  dataSource = new MatTableDataSource<Jugador>(ELEMENT_DATA);
+export class TablaEquipoComponent implements OnChanges{
+  displayedColumns: string[] = ['Nombre', 'Equipo', 'Pos.'];
+  @Input() jugadores: Jugador[] = [];
+  dataSource = new MatTableDataSource<Jugador>(this.jugadores);
 
   constructor() {}
 
-  ngAfterViewInit() {
-   
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['jugadores'] && changes['jugadores'].currentValue) {
+      this.dataSource.data = changes['jugadores'].currentValue;
+    }
   }
   
 }
 
-const ELEMENT_DATA: Jugador[] = [
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Lebron James', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Chris Pol', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-  { Nombre:'Russell Westbrook', Equipo: 'LAL', Posicion: 'F', Puntos: 28.7, Asistencias: 9.6, Rebotes: 1.5, Robos: 1, Tapas: 2},
-];
 
 

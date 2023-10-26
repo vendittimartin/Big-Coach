@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,4 +22,18 @@ public class Equipo {
     private Coach coach;
     @ManyToMany(mappedBy = "equipos")
     private List<Jugador> jugadores;
+
+    public Equipo() {
+    }
+    public Equipo(Coach coach) {
+        this.temporada = 2023;
+        this.puntajeTotal = 0;
+        this.coach = coach;
+        this.jugadores = new ArrayList<>();
+    }
+
+    public List<Jugador> getJugadores() {
+        return this.jugadores;
+    }
+
 }

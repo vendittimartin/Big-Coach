@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import utn.dacs.ms.bff.api.client.MsApiBackendClient;
 import utn.dacs.ms.bff.dto.CoachDTO;
 import utn.dacs.ms.bff.dto.JugadorDTO;
+import utn.dacs.ms.bff.dto.EquipoDTO;
 import utn.dacs.ms.bff.dto.JugadorEstadisticaDTO;
 import utn.dacs.ms.bff.exceptions.BffException;
 import utn.dacs.ms.bff.exceptions.ErrorEnum;
@@ -53,5 +54,18 @@ public class MsApiBackendService {
             log.error("Error producido al solicitar un recurso a /backend/coach", e);
             throw new BffException(ErrorEnum.ERROR_API);
         }
+    }
+
+    public List<EquipoDTO> getEquipoByCoach(String id) {
+        try {
+            return this.msApiBackendClient.getEquipoByCoach(id);
+        } catch (Exception e) {
+            log.error("Error producido al solicitar un recurso a /backend/equipo/id", e);
+            throw new BffException(ErrorEnum.ERROR_API);
+        }
+    }
+
+    public ResponseEntity<EquipoDTO> addJugadorAEquipo(Integer idEquipo, Integer idJugador){
+            return this.msApiBackendClient.addJugador(idEquipo,idJugador);
     }
 }

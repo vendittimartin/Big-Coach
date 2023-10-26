@@ -2,11 +2,13 @@ package utn.dacs.ms.bff.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
 import utn.dacs.ms.bff.dto.CoachDTO;
+import utn.dacs.ms.bff.dto.EquipoDTO;
 import utn.dacs.ms.bff.dto.JugadorDTO;
 import utn.dacs.ms.bff.dto.JugadorEstadisticaDTO;
 import utn.dacs.ms.bff.service.MsApiBackendService;
@@ -42,5 +44,14 @@ public class BackendBffController {
         return apiBackendService.createCoach(coachDTO);
     }
 
+    //Mapping Equipo
+    @GetMapping(value = "/equipo/{id}")
+    public List<EquipoDTO> getEquipoByCoach(@PathVariable(value = "id") String id) {
+        return apiBackendService.getEquipoByCoach(id);
+    }
 
+    @GetMapping(value = "equipo/{idEquipo}/agregarJugador/{idJugador}")
+    public ResponseEntity<EquipoDTO> addJugadorAEquipo(@PathVariable("idEquipo") Integer idEquipo, @PathVariable("idJugador") Integer idJugador) {
+        return apiBackendService.addJugadorAEquipo(idEquipo, idJugador);
+    }
 }
