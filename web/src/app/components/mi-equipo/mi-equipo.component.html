@@ -42,9 +42,9 @@
         *ngIf="listarTabla"></app-tabla-jugadores>
   </div>
 
-  <div class="pt-[5rem] flex flex-col justify-center items-center space-y-4 pb-[5rem]" *ngIf="this.listarJugadoresUsuario">
+  <div class="pt-[5rem] flex flex-col items-center space-y-4 pb-[5rem] justify-center" *ngIf="this.listarJugadoresUsuario">
       <p class="text-[#ff5100] font-semibold text-2xl">Tus jugadores</p>
-      <app-tabla-equipo [jugadores]="this.equipoUsuario[0].jugadores"></app-tabla-equipo>
+      <app-tabla-equipo class="pl-[33.33%]" [jugadores]="this.equipoUsuario[0].jugadores"></app-tabla-equipo>
   </div>
 
 </div>

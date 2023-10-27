@@ -7,26 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
-import utn.dacs.ms.bff.dto.BuildInfoDTO;
-import utn.dacs.ms.bff.service.MsApiConectorService;
+import utn.dacs.ms.bff.dto.NoticiaDTO;
+import utn.dacs.ms.bff.service.MsApiConectorNewsService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/conector")
+@RequestMapping("/conectorNews")
 @Slf4j
 public class MsBffController {
 
     @Autowired
-    private MsApiConectorService apiConectorService;
+    private MsApiConectorNewsService apiConectorService;
 
-    @GetMapping("/ping")
-    public String ping() {
-        return apiConectorService.ping();
+    @GetMapping("/getNoticias")
+    public List<NoticiaDTO> getNoticias() {
+        return apiConectorService.getNoticias();
     }
-    
-    @GetMapping("/version")
-    public BuildInfoDTO getPropuestas() {
-        return apiConectorService.version();
-    }
-
-   
 }

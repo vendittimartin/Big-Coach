@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 
 @FeignClient(
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public interface ApiClient {
 
-    @GetMapping("/todos")
-    <ItemDto> List<ItemDto> todos();
-    
+	@GetMapping("/articles?limit=5")
+	<NoticiaDTO> List<NoticiaDTO> getNoticias(@RequestHeader("X-RapidAPI-Key") String apiKey);
     
 }
