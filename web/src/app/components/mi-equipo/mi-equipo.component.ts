@@ -83,8 +83,7 @@ export class MiEquipoComponent implements AfterViewInit{
     this.error = false;
     this.coachService.createCoach(this.coachData).subscribe(
       (response) =>  {
-        this.coachNuevo = false;
-        this.armarEquipo = true;
+        this.obtenerEquipo();
         this.listarJugadoresUsuario = true;
         Swal.fire({
           icon: 'success',
@@ -108,6 +107,22 @@ export class MiEquipoComponent implements AfterViewInit{
         timer: 2500
       })
     }
+  }
+
+  obtenerEquipo(){
+    this.equipoService.getEquipoByCoach(this.coachData.email).subscribe((equipo) => {
+      this.equipoUsuario = equipo;
+      if (this.equipoUsuario[0].jugadores !== undefined){
+        if (this.equipoUsuario[0].jugadores.length < 5){
+          this.armarEquipo = true;
+          this.listarJugadoresUsuario = true;
+        }
+        else{
+          this.armarEquipo = false;
+          this.listarJugadoresUsuario = true;
+        }
+      }
+    });
   }
 
   handleConfirmationStatus(selectedPlayer: Jugador): void {
