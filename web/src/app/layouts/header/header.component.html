@@ -14,7 +14,7 @@
 
         <!-- Navbar para usuarios LOGUEADOS -->
         <ul *ngIf="this.isLogueado" class="hidden md:flex space-x-7">
-            <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
+            <li><a routerLink="/inicio-log" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
             <li><a routerLink="/mi-equipo" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Mi equipo</a></li>
             <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
             <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
