@@ -1,48 +1,39 @@
-<div class="p-10 text-center">
-    <h2 class="text-white">Nombre de usuario</h2>
-    <h3 class="text-white">Nombre de equipo</h3>
-</div>
-<div class="relative">
-    <div class="carousel-container">
-      <div class="carousel-slides">
-        <div class="carousel-slide">
-          <img src="/web/src/assets/img/big-coach-icon.png" alt="Imagen 1">
-          <div class="news-overlay">
-            <h2>Noticia 1</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+<div class="h-full flex flex-col">
+  <!-- Encabezado con información de usuario -->
+  <div class="text-center text-white my-2 border-solid border-2 border-orange-500 w-1/3 mx-auto">
+    <h3>Nombre de usuario:</h3>
+    <h4>AgusCABJ</h4>
+  </div>
+  <div class="text-center text-white border-solid border-2 border-orange-500 w-1/3 mx-auto">
+    <h3>Nombre de equipo:</h3>
+    <h4>BOKITA EL MAS GRANDE</h4>
+  </div>
+
+  <!-- Carrusel de imágenes -->
+  <div class="inicio-log p-4 max-w-2xl mx-auto flex flex-col">
+    <div class="inicio-log-inner">
+      <ng-container *ngFor="let slide of slides; let i = index">
+        <div [ngClass]="{'active': i === currentIndex}" class="inicio-log-slide w-full" [style.transform]="'translateX(' + (i - currentIndex) * 100 + '%)'">
+          <img [src]="images[i]" alt="Slide Image" class="w-full" [class.hidden]="i !== currentIndex">
+          <h2 class="text-xl font-bold text-white mt-4" [class.hidden]="i !== currentIndex">{{ slide.title }}</h2>
+          <p class="text-gray-600" [class.hidden]="i !== currentIndex">{{ slide.news }}</p>
         </div>
-        <div class="carousel-slide">
-          <img src="/web/src/assets/img/nba2.jpg" alt="Imagen 2">
-          <div class="news-overlay">
-            <h2>Noticia 2</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="/web/src/assets/img/nba3.jpg" alt="Imagen 3">
-          <div class="news-overlay">
-            <h2>Noticia 3</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="/web/src/assets/img/nba2.jpg" alt="Imagen 1">
-          <div class="news-overlay">
-            <h2>Noticia 4</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="/web/src/assets/img/nba1.jpg" alt="Imagen 1">
-          <div class="news-overlay">
-            <h2>Noticia 5</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-      <button (click)="prevSlide()">Anterior</button>
-    <button (click)="nextSlide()">Siguiente</button>
+      </ng-container>
+    </div>
+    <div class="mt-2 p-2 flex justify-center">
+      <button class="inicio-log-prev bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mx-2 rounded" (click)="prevSlide()">Anterior</button>
+      <button class="inicio-log-next bg-orange-500 hover-bg-orange-700 text-white font-bold py-2 px-4 mx-2 rounded" (click)="nextSlide()">Siguiente</button>
     </div>
   </div>
   
+  <!-- Bloque de texto para próximos -->
+  <div class="text-center max-w-xl mx-auto mt-4 overflow-y-auto">
+    <h2 class="text-white">PROXIMOS PARTIDOS</h2>
+    <div class="max-h-36 text-white">
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sint, optio tempora distinctio assumenda amet debitis! Ab maxime nemo, ratione nam voluptates harum corrupti nulla officiis distinctio quisquam sed quas explicabo quod consequatur nisi. Quasi asperiores nesciunt labore. Sequi sapiente cupiditate, alias vero consequuntur ipsum atque a nemo odit unde perspiciatis, impedit fuga consequatur nihil. Dolores laborum nulla quia fugiat, provident mollitia pariatur officiis labore, perferendis fuga cumque reprehenderit incidunt tempore obcaecati? Necessitatibus pariatur dolorum nulla deserunt sapiente quis mollitia! Aliquid aut, esse voluptate porro illum explicabo, minus delectus quae a dicta illo saepe reiciendis praesentium itaque sint suscipit distinctio.
+      </p>
+    </div>
+  </div>
+</div>
+
