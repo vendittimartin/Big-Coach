@@ -42,10 +42,19 @@
         *ngIf="listarTabla"></app-tabla-jugadores>
   </div>
 
-  <div class="pt-[5rem] flex flex-col items-center space-y-4 pb-[5rem] justify-center" *ngIf="this.listarJugadoresUsuario">
-      <p class="text-[#ff5100] font-semibold text-2xl">Tus jugadores</p>
-      <app-tabla-equipo class="pl-[33.33%]" [jugadores]="this.equipoUsuario[0].jugadores"></app-tabla-equipo>
-  </div>
+  <div class="pt-5 flex flex-col items-center space-y-4 pb-5" *ngIf="this.listarJugadoresUsuario">
+    <p class="text-[#ff5100] font-semibold text-2xl mb-9 mt-9">Tus jugadores</p>
+    <div class="custom-flex-container">
+        <div class="custom-table-container">
+            <app-tabla-equipo [jugadores]="this.equipoUsuario[0].jugadores" class="tabla-equipo"></app-tabla-equipo>
+        </div>
+        <div class="custom-image-container">
+            <img src="../../../assets/img/posiciones.jpg" alt="Posiciones del equipo" style="width: 510px" />
+        </div>
+    </div>
+</div>
+
+
 
 </div>
   

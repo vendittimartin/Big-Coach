@@ -16,12 +16,46 @@
     background-size: cover;
   }
   
+  
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);
     }
     50% {
       transform: translateY(-30px); /* Altura del bote */
+    }
+  }
+  
+  .custom-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.custom-table-container {
+    flex: 1;
+    padding: 0 10px;
+    padding-left: 20%;
+}
+
+.custom-image-container {
+    flex: 1;
+    padding: 0 10px;
+    
+}
+
+  @media (max-width: 740px) {
+    .custom-flex-container {
+      flex-direction: column;
+    }
+    .custom-table-container{
+      width:100%;
+      padding-left:25%;
+    }
+    .custom-image-container {
+      width:100%;
+      padding-left:25%;
+      margin-top: 5%;
     }
   }
   
