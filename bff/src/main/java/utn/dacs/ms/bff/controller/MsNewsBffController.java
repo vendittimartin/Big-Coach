@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/conectorNews")
 @Slf4j
-public class MsBffController {
+public class MsNewsBffController {
 
     @Autowired
     private MsApiConectorNewsService apiConectorService;

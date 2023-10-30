@@ -30,7 +30,7 @@ feign:
         readTimeout: 60000
         loggerLevel: basic
       apiClient:
-        url: '${API_URL:https://nba-latest-news.p.rapidapi.com}'
+        url: '${API_URL:https://www.balldontlie.io/api/v1}'
        
 dacs:
   exceptions:

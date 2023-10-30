@@ -36,6 +36,8 @@ feign:
         url: '${MS_CONECTOR_URL:http://localhost:9002}/conectorNews'
       msApiBackendClient:
         url: '${MS_BACKEND_URL:http://localhost:9003}/backend'
+      msApiConectorBDLClient:
+         url: '${MS_CONECTOR_URL:http://localhost:9004}/conectorBDL'
        
 dacs:
   exceptions:
