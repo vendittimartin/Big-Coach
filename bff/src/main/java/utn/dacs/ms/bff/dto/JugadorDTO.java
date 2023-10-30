@@ -6,6 +6,7 @@ public class JugadorDTO {
 
     private Integer id;
     private String nombre;
+    private String apellido;
     private String posicion;
     private String equipoNBA;
 }

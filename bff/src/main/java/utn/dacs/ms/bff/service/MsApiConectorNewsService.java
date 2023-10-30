@@ -22,7 +22,6 @@ public class MsApiConectorNewsService {
         try {
             return this.msApiConectorNewsClient.getNoticias();
         } catch (Exception e) {
-           log.error("Error producido al solicitar un recurso a /conectorNews/getNoticias", e);
             throw new BffException(ErrorEnum.ERROR_API);
         }
     }

@@ -25,7 +25,6 @@ public class MsApiBackendService {
         try {
             return this.msApiBackendClient.getAll();
         } catch (Exception e) {
-            log.error("Error producido al solicitar un recurso a /backend/jugador", e);
             throw new BffException(ErrorEnum.ERROR_API);
         }
     }
@@ -33,7 +32,6 @@ public class MsApiBackendService {
         try {
             return this.msApiBackendClient.getByNombre(nombre);
         } catch (Exception e) {
-            log.error("Error producido al solicitar un recurso a /backend/jugador/jugadorByNombre", e);
             throw new BffException(ErrorEnum.ERROR_API);
         }
     }
@@ -42,7 +40,6 @@ public class MsApiBackendService {
         try {
             return this.msApiBackendClient.getCoachByID(id);
         } catch (Exception e) {
-            log.error("Error producido al solicitar un recurso a /backend/coach", e);
             throw new BffException(ErrorEnum.ERROR_API);
         }
     }
