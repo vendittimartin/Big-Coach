@@ -1,0 +1,10 @@
+.texto-degradado {
+    font-family: 'MainFont', sans-serif;
+    background: linear-gradient(to right, orange, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    font-size: 10vh;
+    font-weight: 700;
+  }

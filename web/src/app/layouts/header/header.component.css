@@ -5,4 +5,13 @@ a.link-Activo, a:hover {
     background-clip: text;
     color: transparent;
   }
+
+  .texto-degradado {
+    font-family: 'MainFont', sans-serif;
+    background: linear-gradient(to right, orange, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
   
