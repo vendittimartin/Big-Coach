@@ -34,7 +34,7 @@ public class Scheduler {
                 List<Jugador> jugadores = jugadorService.buscarPorNombre(nombreCompleto);
                 for(Jugador jugador : jugadores){
                     setPointsToPlayers(estadisticaPartidoDTO, jugador);
-                    //traer partido (armar conectorBDL para traer un partido con id, equipo1,equipo2, pts1, pts2)
+                    //traer partido (armar conectorBDL para traer un partido con id, equipo1,equipo2, pts1, pts2) o modificar estadisticaPartidoDTO
                     //estadisticasPartido.setPartido(partido);
                 }
             }
@@ -43,17 +43,13 @@ public class Scheduler {
 
     public void setPointsToPlayers(EstadisticaPartidoDTO estadisticaPartidoDTO, Jugador jugador){
         EstadisticasPartido estadisticasPartido = new EstadisticasPartido();
-        Long asistencias = estadisticaPartidoDTO.getAsistencias();
-        Long robos = estadisticaPartidoDTO.getRobos();
-        Long bloqueos = estadisticaPartidoDTO.getBloqueos();
-        Long rebotes = estadisticaPartidoDTO.getRebotes();
-        Long puntos = estadisticaPartidoDTO.getPuntos();
-        estadisticasPartido.setAsistencias(asistencias);
-        estadisticasPartido.setRobos(robos);
-        estadisticasPartido.setBloqueos(bloqueos);
-        estadisticasPartido.setRebotes(rebotes);
-        estadisticasPartido.setPuntos(puntos);
-        //estadisticasPartido.setJugador(jugador);
+
+        estadisticasPartido.setAsistencias(estadisticaPartidoDTO.getAsistencias());
+        estadisticasPartido.setRobos(estadisticaPartidoDTO.getRobos());
+        estadisticasPartido.setBloqueos(estadisticaPartidoDTO.getBloqueos());
+        estadisticasPartido.setRebotes(estadisticaPartidoDTO.getRebotes());
+        estadisticasPartido.setPuntos(estadisticaPartidoDTO.getPuntos());
+        estadisticasPartido.setJugador(jugador);
 
         estadisticasPartido.setPuntajeTotal();
 
