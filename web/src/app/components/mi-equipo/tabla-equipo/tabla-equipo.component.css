@@ -1,0 +1,13 @@
+::ng-deep .mat-mdc-table {
+    background-color: #dcdcdc !important;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+    background-color: #dcdcdc !important;
+}
+
+.tabla-equipo{
+    table-layout: fixed;
+    width: 50%;
+    display: table;
+}

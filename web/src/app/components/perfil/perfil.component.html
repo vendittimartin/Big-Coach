@@ -1,3 +1,55 @@
-<p class="text-white">perfil works!</p>
+<div class="w-screen pt-[5rem] flex flex-col justify-center items-center space-y-4" *ngIf="coachNuevo">
+  <div class="bg-[#dcdcdc] w-1/4 min-w-[344px] p-10 rounded-lg shadow-lg text-center border-4 border-[#ff5100]">
+    <div class="text-center mb-4">
+      <h3 class="text-4xl font-bold text-black pb-5">Crea tu club</h3>
+    </div>
 
-<p *ngIf="perfilUsuario" class="text-white">Usuario: {{ perfilUsuario?.username }} </p>
+<form>
+      <input id="manager" name="manager" type="text" autocomplete="manager" required [(ngModel)]="coachData.nombre"
+      class="mb-5 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
+      placeholder="Nombre de Manager">
+      <input id="club" name="club" type="text" autocomplete="club" required [(ngModel)]="coachData.club"
+      class="mb-5 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
+      placeholder="Nombre del Club">
+      <p class="mb-5 text-red-700 font-semibold" *ngIf="error"> Por favor complete todos los campos </p>
+
+    <button (click)="registrarCoach()"
+    type="submit"
+    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#ff5100] hover:bg-[#ff3100] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff5100]">
+    Confirmar
+  </button>
+</form>
+  </div>
+</div>
+
+<div class="h-screen flex flex-col justify-center items-center space-y-4" *ngIf="renderPerfil">
+  <div *ngIf="perfilUsuario" class="bg-[#dcdcdc] w-2/5 min-w-[344px] p-10 rounded-lg shadow-lg text-center border-4 border-[#ff5100]">
+    <div class="text-center mb-4">
+      <h3 class="text-4xl font-bold text-black">{{this.coachData.club}}</h3>
+    </div>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.firstName">
+      <mat-icon class="mr-3">person</mat-icon>{{ perfilUsuario?.firstName }}
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.email">
+      <mat-icon class="mr-3">email</mat-icon>{{ perfilUsuario?.email }}
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center " *ngIf="perfilUsuario">
+      <mat-icon class="mr-3">https</mat-icon>Contraseña: *********** 
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.emailVerified === true">
+      <mat-icon class="mr-3">verified_user</mat-icon> El correo se encuentra verificado
+    </p>
+    <p class="text-lg text-black text-left mb-5 flex items-center" *ngIf="perfilUsuario.emailVerified === false">
+      <mat-icon class="mr-3">cancel</mat-icon>Correo no verificado
+    </p>
+  </div>
+  <div class="mt-4">
+    <button
+      (click)="cerrarSesion()"
+      mat-primary
+      class="rounded-full bg-[#dcdcdc] border-4 border-[#ff5100] hover:bg-[#e64a00] px-6 py-3 text-xl font-semibold :outline-none focus:ring focus:ring-red-300"
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</div>

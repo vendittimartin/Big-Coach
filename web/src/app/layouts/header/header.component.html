@@ -1,7 +1,7 @@
 <nav class="pl-10 pt-5 pr-10" stlye="background-color: rgba(255, 255, 255, 0);">
     <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center;">
-            <a routerLink="/" class="text-white font-black">LOGO</a>
+            <a routerLink="/" class="texto-degradado font-bold text-xl">BIG COACH</a>
         </div>
         <div class="md:hidden">
             <button (click)="toggleMenu()" id="menu-toggle" class="text-white hover:text-blue-300 focus:outline-none">
@@ -19,7 +19,8 @@
             <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
             <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
             <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>
-            <li><a (click)='cerrarSesion()' routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Cerrar sesión</a></li>
+            <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>
+            <li><a (click)='cerrarSesion()' routerLinkActive="link-Activo" class="text-white text-lg font-semibold hover:cursor-pointer">Cerrar sesión</a></li>
         </ul> 
         
         <!-- Navbar para usuarios NO logueados -->
@@ -28,7 +29,7 @@
             <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
             <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
             <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
-            <li><a routerLink="/sobre-nosotros" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre nosotros</a></li>
+            <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>
         </ul> 
     </div>
 </nav>
@@ -41,7 +42,8 @@
         <li><a routerLink="/mi-equipo" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Mi equipo</a></li>
         <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
         <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
-        <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>    
+        <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>
+        <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>    
         <li><a (click)='cerrarSesion()' routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Cerrar sesión</a></li>
     </ul>
 
@@ -51,5 +53,6 @@
         <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
         <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
         <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
+        <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>
     </ul>
 </div>
