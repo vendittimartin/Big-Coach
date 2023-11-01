@@ -22,7 +22,7 @@ export class RankingComponent implements AfterViewInit {
 
     this.tuEquipo = ELEMENT_DATA[6];
   }
-  //Para encontrar el equipo en la tabla
+  //Para encontrar el equipo del usuario en la tabla
   isRowSelected(element: usuarios): boolean {
     return this.tuEquipo !== null && this.tuEquipo?.POS === element.POS;
   }
