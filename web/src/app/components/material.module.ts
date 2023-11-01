@@ -19,6 +19,7 @@ import { SobreElJuegoComponent } from './sobre-el-juego/sobre-el-juego.component
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
