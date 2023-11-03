@@ -10,6 +10,7 @@ public class JugadorEstadisticaDTO {
     private String nombre;
     private String posicion;
     private String equipoNBA;
+    private Long puntajeTotal;
 
     private List<EstadisticaHistoricaDTO> estadisticaHistorica;
 }

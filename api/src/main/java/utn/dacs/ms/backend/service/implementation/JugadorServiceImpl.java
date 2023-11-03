@@ -3,8 +3,12 @@ package utn.dacs.ms.backend.service.implementation;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import utn.dacs.ms.backend.dto.JugadorDTO;
 import utn.dacs.ms.backend.model.entity.Jugador;
 import utn.dacs.ms.backend.model.repository.JugadorRepository;
 import utn.dacs.ms.backend.service.JugadorService;
@@ -14,6 +18,9 @@ public class JugadorServiceImpl implements JugadorService {
 
     @Autowired
     private JugadorRepository jugadorRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public Optional<Jugador> getById(Integer id) {
@@ -43,6 +50,19 @@ public class JugadorServiceImpl implements JugadorService {
     public void delete(Integer id) {
         Optional<Jugador> jugador = getById(id);
         jugadorRepository.delete(jugador.get());
+    }
+
+    @Override
+    public JugadorDTO buscarPorNombreCompleto(String nombre){
+        nombre = nombre.trim().toUpperCase();
+        Jugador jugador = jugadorRepository.buscarPorNombreCompleto(nombre);
+        if(jugador != null){
+            JugadorDTO jugadorDTO = modelMapper.map(jugador, JugadorDTO.class);
+            return jugadorDTO;
+        }
+        else{
+            return null;
+        }
     }
 
     @Override

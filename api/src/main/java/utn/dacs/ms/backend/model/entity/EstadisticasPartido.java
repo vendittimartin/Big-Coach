@@ -19,12 +19,10 @@ public class EstadisticasPartido {
     private Long bloqueos;
     private Long rebotes;
     private Long puntos;
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "jugador_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idJugador")
     private Jugador jugador;
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "partido_id")
     private Partido partido;
 

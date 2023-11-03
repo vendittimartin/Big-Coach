@@ -13,14 +13,11 @@ import java.util.List;
 public class Partido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String equipo1;
     private String equipo2;
-    private Date fecha;
     private Integer puntosEquipo1;
-    private Date puntosEquipo2;
-
+    private Integer puntosEquipo2;
     @OneToMany(mappedBy = "partido")
     private List<EstadisticasPartido> estadisticasPartido;
 

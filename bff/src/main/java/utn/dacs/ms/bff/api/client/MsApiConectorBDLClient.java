@@ -29,4 +29,8 @@ public interface MsApiConectorBDLClient {
 
     @GetMapping("/getStatsByGame/{id}")
     List<EstadisticaPartidoDTO> getStatsByGame(@PathVariable(value="id") Long id);
+
+    @GetMapping("/getGameById/{id}")
+    PartidoDTO getGameById(@PathVariable(value="id") Long id);
+
 }

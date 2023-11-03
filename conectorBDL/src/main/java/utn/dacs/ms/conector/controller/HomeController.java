@@ -38,6 +38,11 @@ public class HomeController {
     public List<PartidoDTO> getGamesByDateNow() {
         return apiService.getGamesByDateNow();
     }
+
+    @GetMapping("/getGameById/{id}")
+    public PartidoDTO getGameById(@PathVariable(value = "id") Long id) {
+        return apiService.getGameByID(id);
+    }
     @GetMapping("/getGamesIDByDateYesterday")
     public List<Long> getGamesIDByDateYesterday() {
         return apiService.getGamesIDByDateYesterday();

@@ -13,5 +13,8 @@ public interface JugadorRepository extends JpaRepository<Jugador, Integer>{
 
     @Query("SELECT j FROM Jugador j WHERE UPPER(TRIM(j.nombre)) LIKE %:nombre%")
     List<Jugador> buscarPorNombre(String nombre);
+
+    @Query("SELECT j FROM Jugador j WHERE UPPER(TRIM(j.nombre)) = :nombre")
+    Jugador buscarPorNombreCompleto(String nombre);
 }
 
