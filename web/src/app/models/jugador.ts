@@ -4,5 +4,6 @@ export interface Jugador {
     nombre:string, 
     equipoNBA: string, 
     posicion: string, 
+    puntajeTotal: number,
     estadisticaHistorica: EstadisticaHistorica
   }

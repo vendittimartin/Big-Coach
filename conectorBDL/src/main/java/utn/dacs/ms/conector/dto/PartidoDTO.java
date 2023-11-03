@@ -8,7 +8,6 @@ import lombok.Data;
 public class PartidoDTO {
     @JsonAlias("id")
     private Long id;
-
     @JsonAlias("home_team")
     @JsonProperty("equipo1")
     private EquipoDTO equipo1;

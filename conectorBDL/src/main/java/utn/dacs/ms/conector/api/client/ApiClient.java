@@ -1,9 +1,6 @@
 package utn.dacs.ms.conector.api.client;
 
-import java.time.LocalDate;
-
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import utn.dacs.ms.conector.dto.EstadisticaDTO;
@@ -20,6 +17,9 @@ public interface ApiClient {
 
 	@GetMapping("/games?dates[]={date}")
 	RespuestaDTO<PartidoDTO> getGamesByDate(@PathVariable(name= "date") String date);
+
+	@GetMapping("/games/{id}")
+	PartidoDTO getGameByID(@PathVariable(name= "id") Long id);
 
 	@GetMapping("/stats?game_ids[]={id}")
 	RespuestaDTO<EstadisticaDTO> getStatsByGame(@PathVariable(name="id") Long id);

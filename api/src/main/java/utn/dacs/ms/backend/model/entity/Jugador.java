@@ -17,7 +17,7 @@ public class Jugador {
     private String nombre;
     private String posicion;
     private String equipoNBA;
-
+    private Long puntajeTotal;
     @OneToMany(mappedBy = "jugador")
     private List<EstadisticaHistorica> estadisticaHistorica;
     @ManyToMany

@@ -1,5 +1,6 @@
 package utn.dacs.ms.backend.service;
 
+import utn.dacs.ms.backend.dto.JugadorDTO;
 import utn.dacs.ms.backend.model.entity.Jugador;
 
 import java.util.Optional;
@@ -14,5 +15,7 @@ public interface JugadorService extends CommonService<Jugador>{
     Boolean existById(Integer id);
 
     List<Jugador> buscarPorNombre(String nombre);
+
+    JugadorDTO buscarPorNombreCompleto(String nombre);
 
 }
