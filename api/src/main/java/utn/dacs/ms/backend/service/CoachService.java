@@ -1,6 +1,10 @@
 package utn.dacs.ms.backend.service;
 
+import org.springframework.http.ResponseEntity;
+import utn.dacs.ms.backend.dto.CoachEquipoDTO;
 import utn.dacs.ms.backend.model.entity.Coach;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface CoachService extends CommonService<Coach>{
@@ -9,4 +13,6 @@ public interface CoachService extends CommonService<Coach>{
     void delete(String id);
 
     Boolean existById(String id);
+
+    List<CoachEquipoDTO> getRanking();
 }

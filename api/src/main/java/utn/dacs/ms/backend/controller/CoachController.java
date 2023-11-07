@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import utn.dacs.ms.backend.dto.CoachDTO;
+import utn.dacs.ms.backend.dto.CoachEquipoDTO;
 import utn.dacs.ms.backend.exceptions.ResourceNotFoundException;
 import utn.dacs.ms.backend.model.entity.Coach;
 import utn.dacs.ms.backend.model.entity.Equipo;
@@ -38,6 +39,12 @@ public class CoachController {
                         -> modelMapper.map(coach, CoachDTO.class))
                 .collect(Collectors.toList());
         return new ResponseEntity<List<CoachDTO>>(data, HttpStatus.OK);
+    }
+
+    @GetMapping("/ranking")
+    public ResponseEntity<List<CoachEquipoDTO>> getRanking() {
+        List<CoachEquipoDTO> coachs = coachService.getRanking();
+        return new ResponseEntity<List<CoachEquipoDTO>>(coachs, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
