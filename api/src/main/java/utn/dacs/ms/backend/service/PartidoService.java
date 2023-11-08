@@ -1,5 +1,6 @@
 package utn.dacs.ms.backend.service;
 
+import utn.dacs.ms.backend.model.entity.Equipo;
 import utn.dacs.ms.backend.model.entity.Partido;
 
 import java.util.Optional;
@@ -10,4 +11,6 @@ public interface PartidoService extends CommonService<Partido>{
     void delete(Integer id);
 
     Boolean existById(Integer id);
+
+    Partido save(Partido entity);
 }

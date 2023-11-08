@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import utn.dacs.ms.backend.model.entity.Equipo;
 import utn.dacs.ms.backend.model.entity.Partido;
 import utn.dacs.ms.backend.model.repository.PartidoRepository;
 import utn.dacs.ms.backend.service.PartidoService;
@@ -34,7 +35,6 @@ public class PartidoServiceImpl implements PartidoService {
     public List<Partido> getAll() {
         return partidoRepository.findAll();
     }
-
     @Override
     public void delete(Long id) {
 

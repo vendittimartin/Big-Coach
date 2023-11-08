@@ -37,4 +37,8 @@ public class MsBDLBffController {
     public List<EstadisticaPartidoDTO> getStatsByGame(@PathVariable(value="id") Long id) {
         return apiConectorService.getStatsByGame(id);
     }
+    @GetMapping("/getGameById/{id}")
+    public PartidoDTO getGameById(@PathVariable(value="id") Long id) {
+        return apiConectorService.getGameById(id);
+    }
 }

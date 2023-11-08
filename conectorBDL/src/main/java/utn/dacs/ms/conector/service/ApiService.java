@@ -33,6 +33,14 @@ public class ApiService {
             throw new BffException(ErrorEnum.ERROR_API);
         }
     }
+
+    public PartidoDTO getGameByID(Long id) {
+        try {
+            return this.apiClient.getGameByID(id);
+        } catch (Exception e) {
+            throw new BffException(ErrorEnum.ERROR_API);
+        }
+    }
     public List<Long> getGamesIDByDateYesterday() {
         LocalDate date = LocalDate.now();
         date = date.minusDays(1);

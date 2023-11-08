@@ -1,4 +1,4 @@
-package utn.dacs.ms.bff.dto;
+package utn.dacs.ms.backend.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +11,7 @@ public class EstadisticaPartidoDTO {
     private Long rebotes;
     private Long puntos;
     private Long bloqueos;
-    private JugadorDTO jugador;
-    private PartidoDTO partido;
-
+    @JsonAlias("jugador")
+    @JsonProperty("jugadorDTO")
+    private JugadorControllerDTO jugadorDTO;
 }

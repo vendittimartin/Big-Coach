@@ -47,4 +47,13 @@ public class MsApiConectorBDLService {
             throw new BffException(ErrorEnum.ERROR_API);
         }
     }
+
+    public PartidoDTO getGameById(Long id) {
+        try {
+            return this.msApiConectorBDLClient.getGameById(id);
+
+        } catch (Exception e) {
+            throw new BffException(ErrorEnum.ERROR_API);
+        }
+    }
 }

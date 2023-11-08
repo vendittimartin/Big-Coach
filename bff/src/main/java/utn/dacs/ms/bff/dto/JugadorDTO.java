@@ -9,4 +9,5 @@ public class JugadorDTO {
     private String apellido;
     private String posicion;
     private String equipoNBA;
+    private Long puntajeTotal;
 }

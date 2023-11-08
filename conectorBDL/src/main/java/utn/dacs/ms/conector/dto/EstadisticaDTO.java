@@ -26,4 +26,8 @@ public class EstadisticaDTO {
     @JsonAlias("player")
     @JsonProperty("jugador")
     private JugadorDTO jugador;
+
+    @JsonAlias("game")
+    @JsonProperty("partido")
+    private PartidoDTO partido;
 }
