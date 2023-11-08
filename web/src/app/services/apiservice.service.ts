@@ -24,7 +24,7 @@ export class ApiService {
     }
 
     getConectorPing() {
-        const url = `${environment.backendForFrontendUrl}/conector/ping`;
+        const url = `${environment.backendForFrontendUrl}/ping`;
         return this.http
             .get(url, { responseType: 'text' })
             .pipe();

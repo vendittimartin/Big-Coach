@@ -7,16 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
-import utn.dacs.ms.bff.dto.CoachDTO;
-import utn.dacs.ms.bff.dto.EquipoDTO;
-import utn.dacs.ms.bff.dto.JugadorDTO;
-import utn.dacs.ms.bff.dto.JugadorEstadisticaDTO;
+import utn.dacs.ms.bff.dto.*;
 import utn.dacs.ms.bff.service.MsApiBackendService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/backend")
+@RequestMapping("/")
 @Slf4j
 public class BackendBffController {
 
@@ -38,6 +35,11 @@ public class BackendBffController {
     @GetMapping(value = "/coach/{id}")
     public CoachDTO getCoachByID(@PathVariable(value = "id") String id) {
         return apiBackendService.getCoachByID(id);
+    }
+
+    @GetMapping(value = "/coach/ranking")
+    public List<CoachEquipoDTO> getRanking() {
+        return apiBackendService.getRanking();
     }
     @PostMapping(value = "/coach")
     public ResponseEntity<?> createCoach(@RequestBody CoachDTO coachDTO) {

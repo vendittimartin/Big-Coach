@@ -22,7 +22,7 @@
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-30px); /* Altura del bote */
+      transform: translateY(-50px); /* Altura del bote */
     }
   }
   

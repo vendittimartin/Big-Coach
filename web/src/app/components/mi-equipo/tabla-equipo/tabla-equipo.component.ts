@@ -18,8 +18,6 @@ export class TablaEquipoComponent implements OnChanges{
     if (changes['jugadores'] && changes['jugadores'].currentValue) {
       this.dataSource.data = changes['jugadores'].currentValue;
     }
-
-    console.log(this.jugadores);
   }
   
 }

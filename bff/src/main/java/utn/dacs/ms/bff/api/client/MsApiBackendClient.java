@@ -3,10 +3,7 @@ package utn.dacs.ms.bff.api.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import utn.dacs.ms.bff.dto.CoachDTO;
-import utn.dacs.ms.bff.dto.EquipoDTO;
-import utn.dacs.ms.bff.dto.JugadorDTO;
-import utn.dacs.ms.bff.dto.JugadorEstadisticaDTO;
+import utn.dacs.ms.bff.dto.*;
 
 import java.util.List;
 
@@ -27,6 +24,8 @@ public interface MsApiBackendClient {
     @GetMapping("/coach/{id}")
     CoachDTO getCoachByID(@RequestParam String id);
 
+    @GetMapping("/coach/ranking")
+    List<CoachEquipoDTO> getRanking();
     @PostMapping("/coach")
     ResponseEntity<?> createCoach(@RequestBody CoachDTO coachDTO);
 

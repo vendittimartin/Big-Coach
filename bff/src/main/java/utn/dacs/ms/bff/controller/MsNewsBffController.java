@@ -13,7 +13,7 @@ import utn.dacs.ms.bff.service.MsApiConectorNewsService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/conectorNews")
+@RequestMapping("/")
 @Slf4j
 public class MsNewsBffController {
 

@@ -14,7 +14,7 @@ export class CoachService {
     }
 
     getCoachByID(nombre: string): Observable<Coach> {
-        const url = `${environment.backendForFrontendUrl}/backend/coach/${nombre}`;
+        const url = `${environment.backendForFrontendUrl}/coach/${nombre}`;
 
         return this.http
             .get(url).pipe(
@@ -22,10 +22,19 @@ export class CoachService {
               );
     }
 
+    getRanking(): Observable<Coach[]> {
+        const url = `${environment.backendForFrontendUrl}/coach/ranking`;
+
+        return this.http
+            .get(url).pipe(
+                map((response: any) => response as Coach[])
+              );
+    }
+
     createCoach(coach: Coach): Observable<Coach> { 
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        const url = `${environment.backendForFrontendUrl}/backend/coach`;
+        const url = `${environment.backendForFrontendUrl}/coach`;
 
         return this.http.post<Coach>(url, coach, {headers});
     }

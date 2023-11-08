@@ -16,7 +16,7 @@ import utn.dacs.ms.bff.service.MsApiConectorBDLService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/conectorBDL")
+@RequestMapping("/")
 @Slf4j
 public class MsBDLBffController {
 

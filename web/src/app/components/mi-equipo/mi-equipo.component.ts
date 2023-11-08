@@ -7,6 +7,7 @@ import { EquipoService } from 'src/app/services/equipo.service';
 import { Equipo } from 'src/app/models/equipo';
 import { CoachService } from 'src/app/services/coach.service';
 import { Coach } from 'src/app/models/coach';
+import { CacheService } from 'src/app/services/cache.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,38 +27,57 @@ export class MiEquipoComponent implements AfterViewInit{
   coachNuevo: boolean = false;
   error: boolean = false;
   loading: boolean = false;
-  constructor(private coachService: CoachService, private jugadorService: JugadorService, private equipoService: EquipoService, private readonly keycloak: KeycloakService) {}
+  constructor(private coachService: CoachService, private jugadorService: JugadorService, private equipoService: EquipoService, private readonly keycloak: KeycloakService, private cacheService: CacheService) {}
 
   async ngAfterViewInit() {
     try{
     this.perfilUsuario = await this.keycloak.loadUserProfile();
-    if (this.perfilUsuario.email){
-      this.coachData.email = this.perfilUsuario.email;
-    }
-        const response = await this.coachService.getCoachByID(this.coachData.email).toPromise();
-        response? this.coachData = response : undefined
-        if (this.coachData.club !== ''){
-        this.equipoService.getEquipoByCoach(this.coachData.email).subscribe((equipo) => {
-          this.equipoUsuario = equipo;
-          if (this.equipoUsuario[0].jugadores !== undefined){
-            if (this.equipoUsuario[0].jugadores.length < 5){
-              this.armarEquipo = true;
-              this.listarJugadoresUsuario = true;
-            }
-            else{
-              this.armarEquipo = false;
-              this.listarJugadoresUsuario = true;
-            }
-          }
-        });
+    const perfilCache = this.cacheService.getPerfilFromCache();
+    const equipoCache = this.cacheService.getEquipoFromCache();
+    if (perfilCache){
+      this.coachData = perfilCache;
+      if (!equipoCache){
+        this.getEquipo()
+      } else {
+        this.equipoUsuario = equipoCache;
+        this.listarJugadoresUsuario = true;
+      }
+    } else {
+      if (this.perfilUsuario.email){
+        this.coachData.email = this.perfilUsuario.email;
+      }
+      const response = await this.coachService.getCoachByID(this.coachData.email).toPromise();
+      response? this.coachData = response : undefined
+      if (this.coachData.club !== ''){
+        this.cacheService.savePerfilToCache(this.coachData)
+        this.getEquipo()
       } else {
         this.armarEquipo = false;
         this.coachNuevo = true;
       }
-    } catch (e) {
+      }
+    }
+    catch (e) {
       this.coachNuevo = true; 
       this.armarEquipo = false; 
     }
+  }
+
+  getEquipo(){
+    this.equipoService.getEquipoByCoach(this.coachData.email).subscribe((equipo) => {
+      this.equipoUsuario = equipo;
+      if (this.equipoUsuario[0].jugadores !== undefined){
+        if (this.equipoUsuario[0].jugadores.length < 5){
+          this.armarEquipo = true;
+          this.listarJugadoresUsuario = true;
+        }
+        else{
+          this.armarEquipo = false;
+          this.listarJugadoresUsuario = true;
+          this.cacheService.saveEquipoToCache(this.equipoUsuario);
+        }
+      }
+    });
   }
 
   onButtonClick(){
@@ -120,6 +140,7 @@ export class MiEquipoComponent implements AfterViewInit{
         else{
           this.armarEquipo = false;
           this.listarJugadoresUsuario = true;
+          this.cacheService.saveEquipoToCache(this.equipoUsuario);
         }
       }
     });

@@ -1,46 +1,40 @@
-/* tabla.component.css */
-
-/* Estilo para la tabla */
-table {
-  border-collapse: collapse;
-  width: 100%;
-  border-radius: 4px;
-  background-color: #BA3B0A
-}
-/* Estilo para las celdas de encabezado */
-th {
-  padding: 16px 8px;
-  background-color: #BA3B0A; /* Color de fondo del encabezado */
-  text-align: left;
-  border-bottom: 2px solid #000;
+::ng-deep .mat-mdc-table {
+  background-color: #f5f5f5 !important;
 }
 
-/* Estilo para las celdas de datos */
-td {
-  padding: 8px;
-  background-color: #b55d3b;
- /* border-bottom: 1px solid #000;*/
+::ng-deep .mat-mdc-paginator-container {
+  background-color: #f5f5f5 !important;
 }
 
-
-/* Estilo para filas al pasar el mouse (hover) 
-td:hover {
-  background-color: #bf4b1d; 
-}*/
-
-.pagination {
-  background-color: #BA3B0A;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  margin: 2px;
-  cursor: pointer;
+.tabla-jugadores{
+  table-layout: fixed;
+  width: 65%;
+  display: table;
 }
-/*
-.pagination button:hover {
-  background-color: #D9D9D9;
-*/
 
-.selected-row {
-  border: 2px solid rgb(248, 150, 84); /* Establece el estilo del borde según tus preferencias */
+.ball {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: relative;
+  animation: bounce 1s infinite;
+  background-image: url('../../../assets/img/pelota-basket.png');
+  background-size: cover;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px); /* Altura del bote */
+  }
 }

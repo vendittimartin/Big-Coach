@@ -13,7 +13,6 @@ import utn.dacs.ms.backend.dto.EstadisticaPartidoDTO;
 import utn.dacs.ms.backend.dto.JugadorControllerDTO;
 import utn.dacs.ms.backend.dto.JugadorDTO;
 import utn.dacs.ms.backend.dto.PartidoDTO;
-import utn.dacs.ms.backend.model.entity.Equipo;
 import utn.dacs.ms.backend.model.entity.EstadisticasPartido;
 import utn.dacs.ms.backend.model.entity.Jugador;
 import utn.dacs.ms.backend.model.entity.Partido;
@@ -72,7 +71,7 @@ public class Scheduler {
         }
     }
 
-    public void setPointsToPlayers(EstadisticaPartidoDTO estadisticaPartidoDTO, Jugador jugador, Partido partido){
+    private void setPointsToPlayers(EstadisticaPartidoDTO estadisticaPartidoDTO, Jugador jugador, Partido partido){
         EstadisticasPartido estadisticasPartido = new EstadisticasPartido();
 
         estadisticasPartido.setAsistencias(estadisticaPartidoDTO.getAsistencias());
@@ -86,40 +85,35 @@ public class Scheduler {
         estadisticasPartido.setPartido(partido);
 
         estadisticaPartidoService.save(estadisticasPartido);
-
-        jugador.setPuntajeTotal(jugador.getPuntajeTotal() + estadisticasPartido.getPuntajeTotal());
-
-        jugadorService.save(jugador);
     }
 
-    public List<Long> getGamesID(){
+    private List<Long> getGamesID(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<Long>> response =
-                restTemplate.exchange("http://localhost:9001/bff/conectorBDL/getGamesIDByDateYesterday",
+                restTemplate.exchange("http://localhost:9001/bff/getGamesIDByDateYesterday",
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<Long>>() {});
         return response.getBody();
     }
 
-    public List<EstadisticaPartidoDTO> getStatsByGameID(Long id){
+    private List<EstadisticaPartidoDTO> getStatsByGameID(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<EstadisticaPartidoDTO>> response =
-                restTemplate.exchange("http://localhost:9001/bff/conectorBDL/getStatsByGame/"+id,
+                restTemplate.exchange("http://localhost:9001/bff/getStatsByGame/"+id,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<EstadisticaPartidoDTO>>() {});
         return response.getBody();
     }
 
-    public PartidoDTO getGameId(Long id){
+    private PartidoDTO getGameId(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<PartidoDTO> response =
-                restTemplate.exchange("http://localhost:9001/bff/conectorBDL/getGameById/"+id,
+                restTemplate.exchange("http://localhost:9001/bff/getGameById/"+id,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<PartidoDTO>() {});
         return response.getBody();
     }
-
 }
