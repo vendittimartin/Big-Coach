@@ -15,7 +15,7 @@ export class EquipoService {
     }
 
     getEquipoByCoach(nombre: string): Observable<Equipo[]> {
-        const url = `${environment.backendForFrontendUrl}/backend/equipo/${nombre}`;
+        const url = `${environment.backendForFrontendUrl}/equipo/${nombre}`;
 
         return this.http
             .get(url).pipe(
@@ -24,7 +24,7 @@ export class EquipoService {
     }
 
     addJugadorAEquipo(idEquipo: number, idJugador: number){
-        const url = `${environment.backendForFrontendUrl}/backend/equipo/${idEquipo}/agregarJugador/${idJugador}`;
+        const url = `${environment.backendForFrontendUrl}/equipo/${idEquipo}/agregarJugador/${idJugador}`;
 
         return this.http
             .get(url).pipe(

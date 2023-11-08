@@ -4,6 +4,7 @@ import { KeycloakProfile } from 'keycloak-js';
 import { Router } from '@angular/router';
 import { Coach } from 'src/app/models/coach';
 import { CoachService } from 'src/app/services/coach.service';
+import { CacheService } from 'src/app/services/cache.service';
 import Swal from 'sweetalert2';
 
 
@@ -20,26 +21,36 @@ export class PerfilComponent implements AfterViewInit{
   renderPerfil: boolean = false;
   error: boolean = false;
 
-  constructor(private readonly keycloak: KeycloakService,private router: Router, private coachService: CoachService){}
+  constructor(private readonly keycloak: KeycloakService,private router: Router, private coachService: CoachService, private cacheService: CacheService){}
 
   async ngAfterViewInit() {
-    try{
-      this.perfilUsuario = await this.keycloak.loadUserProfile();
-      if (this.perfilUsuario.email){
-        this.coachData.email = this.perfilUsuario.email;
-      }
-        const response = await this.coachService.getCoachByID(this.coachData.email).toPromise();
-        response? this.coachData = response : undefined
-        if (this.coachData.club !== ''){ 
-          this.coachNuevo = false;
-          this.renderPerfil = true;
-        } else {
-          this.coachNuevo = true;
+    this.perfilUsuario = await this.keycloak.loadUserProfile();
+    const perfilCache = this.cacheService.getPerfilFromCache();
+    if (perfilCache){
+        this.coachData = perfilCache;
+        this.coachNuevo = false;
+        this.renderPerfil = true;
+    } 
+    else {
+        try{
+          if (this.perfilUsuario.email){
+            this.coachData.email = this.perfilUsuario.email;
+          }
+            const response = await this.coachService.getCoachByID(this.coachData.email).toPromise();
+            response? this.coachData = response : undefined
+            if (this.coachData.club !== ''){ 
+              this.coachNuevo = false;
+              this.renderPerfil = true;
+              this.cacheService.savePerfilToCache(this.coachData);
+            } else {
+              this.coachNuevo = true;
+            }
         }
-      } catch (e) {
-        this.coachNuevo = true; 
-      }
-  }
+        catch (e) {
+          this.coachNuevo = true; 
+        } 
+      } 
+    }
 
   async cerrarSesion(){
     await this.keycloak.logout();

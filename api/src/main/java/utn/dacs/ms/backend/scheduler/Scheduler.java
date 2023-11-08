@@ -90,7 +90,7 @@ public class Scheduler {
     private List<Long> getGamesID(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<Long>> response =
-                restTemplate.exchange("http://localhost:9001/bff/conectorBDL/getGamesIDByDateYesterday",
+                restTemplate.exchange("http://localhost:9001/bff/getGamesIDByDateYesterday",
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<Long>>() {});
@@ -100,7 +100,7 @@ public class Scheduler {
     private List<EstadisticaPartidoDTO> getStatsByGameID(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<EstadisticaPartidoDTO>> response =
-                restTemplate.exchange("http://localhost:9001/bff/conectorBDL/getStatsByGame/"+id,
+                restTemplate.exchange("http://localhost:9001/bff/getStatsByGame/"+id,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<EstadisticaPartidoDTO>>() {});
@@ -110,7 +110,7 @@ public class Scheduler {
     private PartidoDTO getGameId(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<PartidoDTO> response =
-                restTemplate.exchange("http://localhost:9001/bff/conectorBDL/getGameById/"+id,
+                restTemplate.exchange("http://localhost:9001/bff/getGameById/"+id,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<PartidoDTO>() {});

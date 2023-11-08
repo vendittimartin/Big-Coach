@@ -14,7 +14,7 @@ export class JugadorService {
     }
 
     getJugadorByNombre(nombre: string): Observable<Jugador[]> {
-        const url = `${environment.backendForFrontendUrl}/backend/jugador/${nombre}`;
+        const url = `${environment.backendForFrontendUrl}/jugador/${nombre}`;
           
         return this.http
             .get(url).pipe(
