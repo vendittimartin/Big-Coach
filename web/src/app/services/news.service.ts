@@ -14,7 +14,7 @@ export class NewsService {
 
   getNews(): Observable<Noticia[]> {
 
-    const url = `${environment.backendForFrontendUrl}/conectorNews/`;
+    const url = `${environment.backendForFrontendUrl}/getNoticias`;
     return this.http.get(url).pipe(
       map((response: any) => response as Noticia[])
     );

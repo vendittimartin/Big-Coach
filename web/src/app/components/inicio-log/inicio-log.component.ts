@@ -24,6 +24,7 @@ export class InicioLogComponent implements OnInit {
     this.newsService.getNews().subscribe((response: any[]) => {
       this.slides = response.map((item: Noticia) => ({
         title: item.title,
+        url: item.url,
         source: item.source
       }));
     });
