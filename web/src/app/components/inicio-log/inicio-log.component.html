@@ -1,16 +1,16 @@
-<div class="h-full flex flex-col">
-  <!-- Encabezado con información de usuario -->
-  <div class="text-center text-white my-2 border-solid border-2 border-orange-500 w-1/3 mx-auto">
+<div class="flex flex-col">
+  <!-- usuario -->
+  <div class="text-center text-white my-2 border-solid border-2 border-orange-500 bg-orange-600 rounded-xl w-1/3 mx-auto">
     <h3>Nombre de usuario:</h3>
     <h4>AgusCABJ</h4>
   </div>
-  <div class="text-center text-white border-solid border-2 border-orange-500 w-1/3 mx-auto">
+  <div class="text-center text-white border-solid border-2 border-orange-500  bg-orange-600 rounded-xl w-1/3 mx-auto">
     <h3>Nombre de equipo:</h3>
     <h4>BOKITA EL MAS GRANDE</h4>
   </div>
 
-  <!-- Carrusel de imágenes -->
-  <div class="inicio-log p-4 max-w-2xl mx-auto flex flex-col">
+  <!-- Carrusel -->
+  <div class="inicio-log p-4 my-2 max-w-2xl mx-auto flex flex-col border border-purple-50 rounded-xl">
     <div class="inicio-log-inner">
       <ng-container *ngFor="let slide of slides; let i = index">
         <div [ngClass]="{'active': i === currentIndex}" class="inicio-log-slide w-full" [style.transform]="'translateX(' + (i - currentIndex) * 100 + '%)'">
@@ -26,12 +26,12 @@
     </div>
   </div>
   
-  <!-- Bloque de texto para próximos -->
-  <div class="text-center max-w-xl mx-auto mt-4 overflow-y-auto">
+  <!-- partidos -->
+  <div class="text-center max-w-xl mx-auto mt-4">
     <h2 class="text-white">PROXIMOS PARTIDOS</h2>
     <div class="max-h-36 text-white">
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sint, optio tempora distinctio assumenda amet debitis! Ab maxime nemo, ratione nam voluptates harum corrupti nulla officiis distinctio quisquam sed quas explicabo quod consequatur nisi. Quasi asperiores nesciunt labore. Sequi sapiente cupiditate, alias vero consequuntur ipsum atque a nemo odit unde perspiciatis, impedit fuga consequatur nihil. Dolores laborum nulla quia fugiat, provident mollitia pariatur officiis labore, perferendis fuga cumque reprehenderit incidunt tempore obcaecati? Necessitatibus pariatur dolorum nulla deserunt sapiente quis mollitia! Aliquid aut, esse voluptate porro illum explicabo, minus delectus quae a dicta illo saepe reiciendis praesentium itaque sint suscipit distinctio.
+        ACA VAN LOS PROXIMOS PARTIDOS
       </p>
     </div>
   </div>
