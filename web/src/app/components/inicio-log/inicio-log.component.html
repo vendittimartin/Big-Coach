@@ -8,9 +8,12 @@
     <h3>Nombre de equipo:</h3>
     <h4>BOKITA EL MAS GRANDE</h4>
   </div>
+  <div>
+    
+  </div>
 
   <!-- Carrusel -->
-  <div class="inicio-log p-4 my-2 max-w-2xl mx-auto flex flex-col border border-purple-50 rounded-xl">
+  <div class="inicio-log p-4 my-4 max-w-2xl mx-auto flex flex-col border border-purple-50 rounded-xl">
     <div class="inicio-log-inner">
       <ng-container *ngFor="let slide of slides; let i = index">
         <div [ngClass]="{'active': i === currentIndex}" class="inicio-log-slide w-full" [style.transform]="'translateX(' + (i - currentIndex) * 100 + '%)'">
