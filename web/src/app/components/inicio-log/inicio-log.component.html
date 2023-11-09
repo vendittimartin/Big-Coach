@@ -1,7 +1,7 @@
 <app-perfil-flotante></app-perfil-flotante>
 <div class="flex flex-row my-4">
   
-  <div class="text-center max-w-xl mx-auto mt-4" *ngIf="partidos.length > 0">
+  <div class="text-center max-w-xl mx-auto mt-4">
     <h2 class="text-[#ff5100] font-semibold text-3xl mb-9 mt-9 text-center">Próximos partidos</h2>
     <ng-container *ngFor="let partido of partidos">
       <div class="flex items-center justify-center border-2 border-orange-500 rounded-xl w-2/3 mx-auto p-2 mb-3">
@@ -14,7 +14,7 @@
     </ng-container>
   </div>
 
-  <div class="inicio-log p-4 my-4 max-w-2xl mx-auto flex flex-col mb-5" *ngIf="slides.length > 0">
+  <div class="inicio-log p-4 my-4 max-w-2xl mx-auto flex flex-col mb-5">
     <p class="text-[#ff5100] font-semibold text-3xl mb-9 mt-9 text-center">Noticias</p>
     <div class="inicio-log-inner">
       <ng-container *ngFor="let slide of slides; let i = index">
