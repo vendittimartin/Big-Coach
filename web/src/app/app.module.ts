@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/layouts/header/header.component';
 import { FooterComponent } from 'src/app/layouts/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialComponentsModule } from './components/material.module';
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { MaterialComponentsModule } from './components/material.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule,
     MaterialComponentsModule,
   ],
   providers: [

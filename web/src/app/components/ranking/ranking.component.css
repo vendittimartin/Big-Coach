@@ -8,7 +8,7 @@
 
 .tabla-jugadores{
   table-layout: fixed;
-  width: 65%;
+  width: 50%;
   display: table;
 }
 
