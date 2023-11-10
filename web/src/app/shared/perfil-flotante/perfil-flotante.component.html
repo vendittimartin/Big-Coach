@@ -1,11 +1,11 @@
-<div class="text-center max-w-3xl mx-auto mt-9 mb-4">
+<div class="text-center max-w-3xl mx-auto mt-9 mb-4" *ngIf="this.coachData.club !== ''">
     <div class="grid grid-cols-3 items-center justify-items-stretch border-2 border-orange-500 bg-orange-500 mx-auto p-2 mb-3 rounded-md">
         <div class="grid justify-items-start col-span-2">
-            <p class="text-lg font-bold pl-4">Nombre jugador</p>
-            <p class="text-base pl-4">Nombre de Manager</p>
+            <p class="text-xl font-bold pl-4">{{this.coachData.club}}</p>
+            <p class="text-base pl-4" *ngIf="this.coachData.nombre !== ''">{{this.coachData.nombre}}</p>
         </div>
-        <div class="text-right col-span-1">
-            <p class="text-lg pr-4">Ranking: 9</p>
+        <div class="col-span-1" *ngIf="this.coachData.posicion !== null && this.coachData.posicion > 0">
+            <p class="text-lg pr-4 text-right flex items-center justify-end">Ranking: {{this.coachData.posicion}} <mat-icon class="mx-2" *ngIf="this.coachData.posicion === 1">grade</mat-icon></p> 
         </div>
     </div>
 </div>

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Coach } from '../models/coach';
+import { Equipo } from '../models/equipo';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,13 @@ export class CacheService {
 
   constructor() { }
 
-  saveRankingToCache(data: any): void {
+  saveRankingToCache(data: Coach[]): void {
     localStorage.setItem('rankingCache', JSON.stringify(data));
     const expiration = this.calculateExpirationDate();
     localStorage.setItem(this.EXPIRATION_KEY, expiration.toISOString());
   }
 
-  getRankingFromCache(): any | null {
+  getRankingFromCache(): Coach[] | null {
     const cachedData = localStorage.getItem('rankingCache');
     const expiration = localStorage.getItem(this.EXPIRATION_KEY);
     if (cachedData && expiration) {
@@ -30,11 +32,11 @@ export class CacheService {
     return null;
   }
 
- saveEquipoToCache(data: any): void {
+ saveEquipoToCache(data: Equipo[]): void {
     localStorage.setItem('equipoCache', JSON.stringify(data));
   }
 
- getEquipoFromCache(): any | null {
+ getEquipoFromCache(): Equipo[] | null {
     const cachedData = localStorage.getItem('equipoCache');
     if(cachedData){
       return JSON.parse(cachedData);
@@ -43,11 +45,11 @@ export class CacheService {
     }
   } 
 
-  savePerfilToCache(data: any): void {
+  savePerfilToCache(data: Coach): void {
     localStorage.setItem('perfilCache', JSON.stringify(data));
   }
 
-  getPerfilFromCache(): any | null {
+  getPerfilFromCache(): Coach | null {
     const cachedData = localStorage.getItem('perfilCache');
     if(cachedData){
       return JSON.parse(cachedData);

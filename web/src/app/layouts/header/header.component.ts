@@ -22,12 +22,20 @@ export class HeaderComponent implements AfterViewInit{
   }
 
   iniciarSesion(){
+    localStorage.removeItem('perfilCache');
+    localStorage.removeItem('equipoCache');
+    localStorage.removeItem('rankingCache');
     this.keycloak.login();
+  }
+
+  registrarUsuario(){
+    this.keycloak.register();
   }
 
   cerrarSesion(){
     localStorage.removeItem('perfilCache');
     localStorage.removeItem('equipoCache');
+    localStorage.removeItem('rankingCache');
     this.keycloak.logout();
   }
 }

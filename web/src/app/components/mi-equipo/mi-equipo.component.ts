@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 export class MiEquipoComponent implements AfterViewInit{
   public perfilUsuario: KeycloakProfile | null = null;
   equipoUsuario: Equipo[] = [];
-  coachData: Coach = { email: '', nombre: '', club: '' };
+  coachData: Coach = { email: '', nombre: '', club: '', posicion: null };
   jugadoresEncontrados: Jugador[] = [];
   nombreJugador: string = '';
   listarTabla: boolean = false;
@@ -105,6 +105,7 @@ export class MiEquipoComponent implements AfterViewInit{
       (response) =>  {
         this.obtenerEquipo();
         this.listarJugadoresUsuario = true;
+        this.coachNuevo = false;
         Swal.fire({
           icon: 'success',
           title: 'Genial!',

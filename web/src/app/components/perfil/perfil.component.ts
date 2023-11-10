@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 export class PerfilComponent implements AfterViewInit{
   public perfilUsuario: KeycloakProfile | null = null;
   public isLogueado = false;
-  coachData: Coach = { email: '', nombre: '', club: '' };
+  coachData: Coach = { email: '', nombre: '', club: '', posicion:null };
   coachNuevo: boolean = false;
   renderPerfil: boolean = false;
   error: boolean = false;

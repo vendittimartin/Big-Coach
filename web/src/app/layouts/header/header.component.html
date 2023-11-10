@@ -16,7 +16,6 @@
         <ul *ngIf="this.isLogueado" class="hidden md:flex space-x-7">
             <li><a routerLink="/inicio-log" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
             <li><a routerLink="/mi-equipo" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Mi equipo</a></li>
-            <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
             <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
             <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>
             <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>
@@ -26,10 +25,10 @@
         <!-- Navbar para usuarios NO logueados -->
         <ul *ngIf="!this.isLogueado" class="hidden md:flex space-x-7">
             <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
-            <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
             <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
-            <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
             <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>
+            <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
+            <li><a (click)='registrarUsuario()' class="text-white text-lg font-semibold">Registrate ahora!</a></li>
         </ul> 
     </div>
 </nav>
@@ -40,7 +39,6 @@
     <ul *ngIf="this.isLogueado" class="py-2 px-4 space-y-2 items-center justify-center text-center" stlye="background-color: rgba(255, 255, 255, 0);">
         <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
         <li><a routerLink="/mi-equipo" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Mi equipo</a></li>
-        <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
         <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
         <li><a routerLink="/perfil" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Perfil</a></li>
         <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>    
@@ -50,9 +48,9 @@
     <!-- Menú hamburguesa para usuario NO logueado -->
     <ul *ngIf="!this.isLogueado" class="py-2 px-4 space-y-2 items-center justify-center text-center" stlye="background-color: rgba(255, 255, 255, 0);">
         <li><a routerLink="/" routerLinkActive="link-Activo" [routerLinkActiveOptions]="{ exact: true }" class="text-white text-lg font-semibold">Inicio</a></li>
-        <li><a routerLink="/equipos" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Equipos</a></li>
         <li><a routerLink="/ranking" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Ranking</a></li>
-        <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
         <li><a routerLink="/sobre-el-juego" routerLinkActive="link-Activo" class="text-white text-lg font-semibold">Sobre el juego</a></li>
+        <li><a (click)='iniciarSesion()' class="text-white text-lg font-semibold">Iniciar Sesión</a></li>
+        <li><a (click)='registrarUsuario()' class="text-white text-lg font-semibold">Registrate ahora!</a></li>
     </ul>
 </div>
