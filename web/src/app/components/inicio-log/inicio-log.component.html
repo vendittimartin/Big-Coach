@@ -18,11 +18,7 @@
     <p class="text-[#ff5100] font-semibold text-3xl mb-9 mt-9 text-center">Noticias</p>
     <div class="inicio-log-inner">
       <ng-container *ngFor="let slide of slides; let i = index">
-<<<<<<< HEAD
-        <a href="{{slide.url}}" >
-=======
         <a href="{{slide.url}}" target="_blank">
->>>>>>> d655cd9727a328da74efdfe27e47b0616c98f764
           <div [ngClass]="{'active': i === currentIndex}" class="inicio-log-slide w-full" [style.transform]="'translateX(' + (i - currentIndex) * 100 + '%)'">
             <img [src]="images[i]" alt="Slide Image" class="w-full" [class.hidden]="i !== currentIndex">
             <h2 class="text-xl font-bold text-white mt-4" [class.hidden]="i !== currentIndex">{{ slide.title }}</h2>
