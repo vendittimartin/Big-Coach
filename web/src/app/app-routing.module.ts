@@ -12,7 +12,7 @@ import { SobreElJuegoComponent } from './components/sobre-el-juego/sobre-el-jueg
 const routes: Routes = [
 
   { path: '', component: InicioComponent},
-  {path: 'inicio-log', component: InicioLogComponent},
+  { path: 'inicio-log', component: InicioLogComponent, canActivate: [AuthGuard]},
   { path: '', component: InicioComponent, },
   { path: 'equipos', component: EquiposComponent},
   { path: 'mi-equipo', component: MiEquipoComponent, canActivate:[AuthGuard]},

@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { SobreElJuegoComponent } from './sobre-el-juego/sobre-el-juego.component';
+import { PerfilFlotanteComponent } from '../shared/perfil-flotante/perfil-flotante.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SobreElJuegoComponent } from './sobre-el-juego/sobre-el-juego.component
     MiModalComponent,
     TablaJugadoresComponent,
     TablaEquipoComponent,
-    SobreElJuegoComponent
+    SobreElJuegoComponent,
+    PerfilFlotanteComponent
   ]
 })
 export class MaterialComponentsModule { }

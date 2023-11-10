@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { KeycloakService } from 'keycloak-angular';
 export class HeaderComponent implements AfterViewInit{
   showMenu: boolean = false;
   public isLogueado = false;
-  constructor(private readonly keycloak: KeycloakService){}
+  constructor(private readonly keycloak: KeycloakService, private cacheService: CacheService){}
 
   async ngAfterViewInit() {
     this.isLogueado = await this.keycloak.isLoggedIn();
@@ -25,6 +26,8 @@ export class HeaderComponent implements AfterViewInit{
   }
 
   cerrarSesion(){
+    localStorage.removeItem('perfilCache');
+    localStorage.removeItem('equipoCache');
     this.keycloak.logout();
   }
 }
