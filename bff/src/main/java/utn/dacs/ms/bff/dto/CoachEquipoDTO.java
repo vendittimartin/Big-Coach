@@ -7,4 +7,5 @@ public class CoachEquipoDTO {
     private String nombre;
     private String club;
     private Integer puntajeTotal;
+    private Integer posicion;
 }

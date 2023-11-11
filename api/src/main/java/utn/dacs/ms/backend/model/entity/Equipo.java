@@ -17,6 +17,7 @@ public class Equipo {
     private Integer idEquipo;
     private Integer temporada;
     private Integer puntajeTotal;
+    private Integer posicion;
     @ManyToOne
     @JoinColumn(name = "coach_id", referencedColumnName = "email")
     private Coach coach;
