@@ -4,8 +4,5 @@
             <p class="text-xl font-bold pl-4">{{this.coachData.club}}</p>
             <p class="text-base pl-4" *ngIf="this.coachData.nombre !== ''">{{this.coachData.nombre}}</p>
         </div>
-        <div class="col-span-1" *ngIf="this.coachData.posicion !== null && this.coachData.posicion > 0">
-            <p class="text-lg pr-4 text-right flex items-center justify-end">Ranking: {{this.coachData.posicion}} <mat-icon class="mx-2" *ngIf="this.coachData.posicion === 1">grade</mat-icon></p> 
-        </div>
     </div>
 </div>
