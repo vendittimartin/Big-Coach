@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { CacheService } from 'src/app/services/cache.service';
 import { Coach } from 'src/app/models/coach';
 
@@ -7,18 +7,15 @@ import { Coach } from 'src/app/models/coach';
   templateUrl: './perfil-flotante.component.html',
   styleUrls: ['./perfil-flotante.component.css']
 })
-export class PerfilFlotanteComponent implements AfterViewInit {
+export class PerfilFlotanteComponent implements OnChanges {
 
-  coachData: Coach = { email: '', nombre: '', club: '', posicion:null };
+  @Input() coachData: Coach = { email: '', nombre: '', club: '', posicion:null };
 
   constructor(private cacheService: CacheService){}
 
-  ngAfterViewInit(){
-    const coachData = this.cacheService.getPerfilFromCache();
-    if(coachData){
-      this.coachData = coachData;
-      console.log(this.coachData);
-      console.log(this.coachData.posicion);
+  ngOnChanges(changes: SimpleChanges){
+    if (changes['coachData']) {
+      this.coachData = this.coachData;
     }
   }
 }

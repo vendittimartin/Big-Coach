@@ -61,6 +61,9 @@ public class CoachServiceImpl implements CoachService {
             coachDTOs.add(CoachEquipoDTO);
         }
         coachDTOs.sort(Comparator.comparingInt(CoachEquipoDTO::getPuntajeTotal).reversed());
+        for (int i = 0; i < coachDTOs.size(); i++) {
+            coachDTOs.get(i).setPosicion(i + 1);
+        }
         return coachDTOs;
     }
 

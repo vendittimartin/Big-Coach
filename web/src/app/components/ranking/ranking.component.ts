@@ -18,7 +18,7 @@ export class RankingComponent implements AfterViewInit {
   displayedColumns: string[] = ['Posicion', 'Coach', 'Nombre', 'Club', 'Puntos'];
   dataSource = new MatTableDataSource<Coach>([]);
   loading: boolean = false;
-  coachData: Coach = { email: '', nombre: '', club: '', posicion:null };
+  coachData: Coach = { email: '', nombre: '', club: '', posicion:0 };
   public perfilUsuario: KeycloakProfile | null = null;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -52,24 +52,17 @@ export class RankingComponent implements AfterViewInit {
         const cachedRanking = this.cacheService.getRankingFromCache();
         if (cachedRanking) {
             this.dataSource.data = cachedRanking;
-            const indice = cachedRanking.findIndex(coach => coach.email === this.coachData.email);
-            if (indice >= 0){
-              this.coachData.posicion = indice + 1;
-              if (this.coachData.nombre !== '' && this.coachData.club !== ''){
+            if (this.coachData.nombre !== '' && this.coachData.club !== ''){
               this.cacheService.savePerfilToCache(this.coachData);
-            }}
+            }
         } else {
           const response = await this.coachService.getRanking().toPromise();        
           this.ranking = response;
           if (this.ranking){
             this.dataSource.data = this.ranking;
             this.cacheService.saveRankingToCache(this.ranking);
-            const indice = this.ranking.findIndex(coach => coach.email === this.coachData.email);
-            if (indice >= 0){
-              this.coachData.posicion = indice + 1;
-              if (this.coachData.nombre !== '' && this.coachData.club !== ''){
+            if (this.coachData.nombre !== '' && this.coachData.club !== ''){
                 this.cacheService.savePerfilToCache(this.coachData);
-              }
             }
           }
           this.loading = false;

@@ -1,3 +1,5 @@
+<app-perfil-flotante [coachData]="coachData" *ngIf="!renderPerfil"></app-perfil-flotante>
+
 <div class="w-screen pt-[5rem] flex flex-col justify-center items-center space-y-4" *ngIf="coachNuevo">
   <div class="bg-[#dcdcdc] w-1/4 min-w-[344px] p-10 rounded-lg shadow-lg text-center border-4 border-[#ff5100]">
     <div class="text-center mb-4">
@@ -5,12 +7,12 @@
     </div>
 
 <form>
-      <input id="manager" name="manager" type="text" autocomplete="manager" required [(ngModel)]="coachData.nombre"
-      class="mb-5 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
-      placeholder="Nombre de Manager">
       <input id="club" name="club" type="text" autocomplete="club" required [(ngModel)]="coachData.club"
       class="mb-5 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
       placeholder="Nombre del Club">
+      <input id="manager" name="manager" type="text" autocomplete="manager" required [(ngModel)]="coachData.nombre"
+      class="mb-9 bg-[#dcdcdc] appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-[#ff5100] focus:z-10 sm:text-sm"
+      placeholder="Nombre de Manager">
       <p class="mb-5 text-red-700 font-semibold" *ngIf="error"> Por favor complete todos los campos </p>
 
     <button (click)="registrarCoach()"
