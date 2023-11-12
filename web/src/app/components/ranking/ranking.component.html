@@ -8,31 +8,52 @@
   </div>
     
   <div class="tabla-jugadores">
-    <table mat-table [dataSource]="dataSource">
+    <table class="table table-striped" mat-table [dataSource]="dataSource">
 
-          <ng-container matColumnDef="Posicion">
-            <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Pos. </th>
-            <td mat-cell *matCellDef="let element">{{element.posicion }}</td>
+      <ng-container matColumnDef="Posicion" >
+        <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]" >Pos.</th>
+        <td mat-cell *matCellDef="let element" >
+            <ng-container *ngIf="element.posicion === 0">
+              <div class=" first-row gold-trophy">
+              </div>
           </ng-container>
+          <ng-container *ngIf="element.posicion === 1">
+              <div class="second-row silver-trophy">
+              </div>
+          </ng-container>
+          <ng-container *ngIf="element.posicion === 2">
+              <div class=" third-row bronze-trophy">
+              </div>
+          </ng-container>
+          <ng-container *ngIf="element.posicion > 2">
+              {{ element.posicion }}
+          </ng-container>
+         </td>
+      </ng-container>
+      
 
           <ng-container matColumnDef="Coach" >
             <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Coach </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            <td mat-cell *matCellDef="let element"
+            [class]="element.posicion === 0 ? 'first-row' : (element.posicion === 1 ? 'second-row' : (element.posicion === 2 ? 'third-row' : 'text-black'))" > {{element.email}} </td>
           </ng-container>
       
           <ng-container matColumnDef="Nombre">
             <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            <td mat-cell *matCellDef="let element" 
+            [class]="element.posicion === 0 ? 'first-row' : (element.posicion === 1 ? 'second-row' : (element.posicion === 2 ? 'third-row' : 'text-black'))"> {{element.nombre}} </td>
           </ng-container>
       
           <ng-container matColumnDef="Club">
-            <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Club </th>
-            <td mat-cell *matCellDef="let element"> {{element.club}} </td>
+            <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]" > Club </th>
+            <td mat-cell *matCellDef="let element" 
+              [class]="element.posicion === 0 ? 'first-row' : (element.posicion === 1 ? 'second-row' : (element.posicion === 2 ? 'third-row' : 'text-black'))"> {{element.club}} </td>
           </ng-container>
       
           <ng-container matColumnDef="Puntos">
             <th mat-header-cell *matHeaderCellDef class="text-[#ff5100]"> Puntos </th>
-            <td mat-cell *matCellDef="let element"> {{element.puntajeTotal}} </td>
+            <td mat-cell *matCellDef="let element; let i = index" 
+            [class]="i === 0 ? 'text-3xl font-bold text-[#d4af37] ' : (i === 1 ? 'second-row' : (i === 2 ? 'third-row' : 'text-black'))"> {{element.puntajeTotal}} </td>
           </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -46,3 +67,4 @@
     </mat-paginator>
   </div>
 </div>
+

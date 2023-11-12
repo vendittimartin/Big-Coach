@@ -1,9 +1,10 @@
 ::ng-deep .mat-mdc-table {
-  background-color: #f5f5f5 !important;
+  background-color:  #ffffff  !important;
 }
 
 ::ng-deep .mat-mdc-paginator-container {
-  background-color: #f5f5f5 !important;
+  background-color: #aca6a6 !important;
+  border-top: 1px solid black;
 }
 
 .tabla-jugadores{
@@ -38,3 +39,60 @@
     transform: translateY(-50px); /* Altura del bote */
   }
 }
+
+tr:hover {
+  background-color: #fddece; /* Color de fondo al pasar el ratón sobre las filas */
+}
+
+
+.first-row {
+  font-size: 30px; 
+  height: 90px; 
+  /* background: linear-gradient(to bottom, #f86700, #f17d2a); */
+  text-transform: capitalize;
+  color: #fcc200;
+ 
+}
+.second-row {
+  font-size: 25px; 
+  height: 70px; 
+  /* background: linear-gradient(to bottom,#f17d2a, #f0924f);*/
+  text-transform: capitalize;
+  color: #848482;
+ 
+}
+.third-row {
+  font-size: 20px; 
+  height: 50px; 
+ /*  background: linear-gradient(to bottom, #f0924f, #fcc1b0);*/
+  text-transform: capitalize;
+  color: #996515;
+ 
+}
+.gold-trophy {
+  background-image: url('../../../assets/img/gold_trophy.png');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 79px;
+}
+
+.silver-trophy {
+  background-image: url('../../../assets/img/silver_trophy.png');
+background-size: cover;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 70px;
+}
+
+.bronze-trophy {
+  background-image: url('../../../assets/img/bronze_trophy.png');
+ background-size: cover;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 65px;
+}
+
