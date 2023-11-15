@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.slf4j.Slf4j;
 import utn.dacs.ms.conector.api.client.ApiClient;
 import utn.dacs.ms.conector.dto.NoticiaDTO;
@@ -18,8 +18,10 @@ public class ApiService {
 	@Autowired
     private ApiClient apiClient;
 
+    @Value("${dacs.api.key}")
+    private String API_KEY;
     public List<NoticiaDTO> getNoticias() {
-        String apiKey = "baca6d3ac2msh5a1b2d3367c8635p1cf69ajsn7bf1420ab90a";
+        String apiKey = API_KEY;
         try {
             return this.apiClient.getNoticias(apiKey);
         } catch (Exception e) {

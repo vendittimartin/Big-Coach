@@ -31,6 +31,8 @@ dacs:
     allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
     allowed-headers: "*"
     max-age: 3600
+  bff:
+    url: '${MS_BFF_URL:http://localhost:9001/bff}'
   
 server:
   port :  ${CONECTOR_PORT:9003}

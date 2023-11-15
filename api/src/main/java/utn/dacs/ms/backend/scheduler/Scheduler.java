@@ -2,6 +2,7 @@ package utn.dacs.ms.backend.scheduler;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,8 @@ import java.util.Optional;
 @Component @EnableScheduling
 public class Scheduler {
 
+    @Value("${dacs.bff.url}")
+    private String url;
     @Autowired
     private JugadorService jugadorService;
     @Autowired
@@ -38,7 +41,7 @@ public class Scheduler {
     @Autowired
     private EquipoService equipoService;
 
-    @Scheduled(cron = "0 0 8 * * ?") //tiempo en S M H D M A --> 0 seg 0 min 8hs todos los días del mes de cada año
+    @Scheduled(cron = "* * * * * ?") //tiempo en S M H D M A --> 0 seg 0 min 8hs todos los días del mes de cada año
     public void task(){
         List<Long> gamesID = getGamesID();
         if(!gamesID.isEmpty()){
@@ -90,7 +93,7 @@ public class Scheduler {
     private List<Long> getGamesID(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<Long>> response =
-                restTemplate.exchange("http://localhost:9001/bff/getGamesIDByDateYesterday",
+                restTemplate.exchange(url+"/getGamesIDByDateYesterday",
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<Long>>() {});
@@ -100,7 +103,7 @@ public class Scheduler {
     private List<EstadisticaPartidoDTO> getStatsByGameID(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<EstadisticaPartidoDTO>> response =
-                restTemplate.exchange("http://localhost:9001/bff/getStatsByGame/"+id,
+                restTemplate.exchange(url+"/getStatsByGame/"+id,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<EstadisticaPartidoDTO>>() {});
@@ -110,7 +113,7 @@ public class Scheduler {
     private PartidoDTO getGameId(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<PartidoDTO> response =
-                restTemplate.exchange("http://localhost:9001/bff/getGameById/"+id,
+                restTemplate.exchange(url+"/getGameById/"+id,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<PartidoDTO>() {});
