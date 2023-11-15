@@ -1,0 +1,15 @@
+::ng-deep .mat-mdc-table {
+    background-color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+    background-color: #ffffff !important;
+}
+
+::ng-deep .mat-mdc-header-row{
+    background-color: #f97316 !important;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+    background-color: #f97316 !important;
+}

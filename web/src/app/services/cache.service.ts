@@ -59,7 +59,7 @@ export class CacheService {
   } 
 
   private clearCache(): void {
-    localStorage.removeItem('rankingCache');
+    localStorage.clear();
     localStorage.removeItem(this.EXPIRATION_KEY);
   }
 
