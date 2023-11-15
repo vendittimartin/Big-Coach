@@ -5,6 +5,9 @@
 ::ng-deep .mat-mdc-paginator-container {
     background-color: #dcdcdc !important;
 }
+::ng-deep .mat-mdc-header-row{
+    background-color: #f97316 !important;
+  }
 
 .tabla-equipo{
     table-layout: fixed;
