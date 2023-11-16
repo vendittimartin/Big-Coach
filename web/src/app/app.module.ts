@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializeKeycloak } from './core/init/keycloak-init.factory';
 import { ApiService } from './core/services/apiservice.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/layouts/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './components/material.module';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,9 @@ import { MaterialComponentsModule } from './components/material.module';
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService],
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true 
     },
     ApiService,
   ],
