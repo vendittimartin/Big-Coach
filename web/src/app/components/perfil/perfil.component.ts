@@ -53,6 +53,7 @@ export class PerfilComponent implements AfterViewInit{
     }
 
   async cerrarSesion(){
+    this.cacheService.clearLoggedCache();
     await this.keycloak.logout();
     this.router.navigate(['/']);
   }

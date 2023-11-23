@@ -22,9 +22,6 @@ export class HeaderComponent implements AfterViewInit{
   }
 
   iniciarSesion(){
-    localStorage.removeItem('perfilCache');
-    localStorage.removeItem('equipoCache');
-    localStorage.removeItem('rankingCache');
     this.keycloak.login();
   }
 
@@ -33,9 +30,7 @@ export class HeaderComponent implements AfterViewInit{
   }
 
   cerrarSesion(){
-    localStorage.removeItem('perfilCache');
-    localStorage.removeItem('equipoCache');
-    localStorage.removeItem('rankingCache');
+    this.cacheService.clearLoggedCache();
     this.keycloak.logout();
   }
 }

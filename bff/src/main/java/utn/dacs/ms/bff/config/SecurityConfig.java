@@ -35,7 +35,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()
 				.authorizeRequests(authorize -> authorize
-						.antMatchers("/bff/coach/ranking").permitAll()
+						.antMatchers("/coach/ranking").permitAll()
 						.anyRequest().authenticated()
 				).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()

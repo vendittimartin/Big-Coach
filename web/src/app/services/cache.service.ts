@@ -12,14 +12,14 @@ export class CacheService {
   constructor() { }
 
   saveRankingToCache(data: Coach[]): void {
-    localStorage.setItem('rankingCache', JSON.stringify(data));
+    sessionStorage.setItem('rankingCache', JSON.stringify(data));
     const expiration = this.calculateExpirationDate();
-    localStorage.setItem(this.EXPIRATION_KEY, expiration.toISOString());
+    sessionStorage.setItem(this.EXPIRATION_KEY, expiration.toISOString());
   }
 
   getRankingFromCache(): Coach[] | null {
-    const cachedData = localStorage.getItem('rankingCache');
-    const expiration = localStorage.getItem(this.EXPIRATION_KEY);
+    const cachedData = sessionStorage.getItem('rankingCache');
+    const expiration = sessionStorage.getItem(this.EXPIRATION_KEY);
     if (cachedData && expiration) {
       const expirationDate = new Date(expiration);
       if (new Date() < expirationDate) {
@@ -33,11 +33,11 @@ export class CacheService {
   }
 
  saveEquipoToCache(data: Equipo[]): void {
-    localStorage.setItem('equipoCache', JSON.stringify(data));
+    sessionStorage.setItem('equipoCache', JSON.stringify(data));
   }
 
  getEquipoFromCache(): Equipo[] | null {
-    const cachedData = localStorage.getItem('equipoCache');
+    const cachedData = sessionStorage.getItem('equipoCache');
     if(cachedData){
       return JSON.parse(cachedData);
     } else {
@@ -46,11 +46,11 @@ export class CacheService {
   } 
 
   savePerfilToCache(data: Coach): void {
-    localStorage.setItem('perfilCache', JSON.stringify(data));
+    sessionStorage.setItem('perfilCache', JSON.stringify(data));
   }
 
   getPerfilFromCache(): Coach | null {
-    const cachedData = localStorage.getItem('perfilCache');
+    const cachedData = sessionStorage.getItem('perfilCache');
     if(cachedData){
       return JSON.parse(cachedData);
     } else {
@@ -58,9 +58,14 @@ export class CacheService {
     }
   } 
 
+  clearLoggedCache(): void {
+    sessionStorage.removeItem('perfilCache');
+    sessionStorage.removeItem('equipoCache');
+  }
+
   private clearCache(): void {
-    localStorage.clear();
-    localStorage.removeItem(this.EXPIRATION_KEY);
+    sessionStorage.clear();
+    sessionStorage.removeItem(this.EXPIRATION_KEY);
   }
 
   private calculateExpirationDate(): Date {

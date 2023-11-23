@@ -28,7 +28,7 @@ import java.util.Optional;
 @Component @EnableScheduling
 public class Scheduler {
 
-    @Value("${dacs.bff.url}")
+    @Value("${dacs.conectorBDL.url}")
     private String url;
     @Autowired
     private JugadorService jugadorService;
@@ -41,7 +41,7 @@ public class Scheduler {
     @Autowired
     private EquipoService equipoService;
 
-    @Scheduled(cron = "* * * * * ?") //tiempo en S M H D M A --> 0 seg 0 min 8hs todos los días del mes de cada año
+    @Scheduled(cron = "0 0 8 * * ?") //tiempo en S M H D M A --> 0 seg 0 min 8hs todos los días del mes de cada año
     public void task(){
         List<Long> gamesID = getGamesID();
         if(!gamesID.isEmpty()){

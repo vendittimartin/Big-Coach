@@ -33,6 +33,8 @@ dacs:
     max-age: 3600
   bff:
     url: '${MS_BFF_URL:http://localhost:9001/bff}'
+  conectorBDL:
+    url: '${MS_BDL_URL:http://localhost:9004//conectorBDL}'
   
 server:
   port :  ${CONECTOR_PORT:9003}
