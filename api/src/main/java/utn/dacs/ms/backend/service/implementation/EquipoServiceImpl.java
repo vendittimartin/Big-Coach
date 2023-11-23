@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utn.dacs.ms.backend.model.entity.Equipo;
+import utn.dacs.ms.backend.model.entity.EstadisticasPartido;
 import utn.dacs.ms.backend.model.entity.Jugador;
 import utn.dacs.ms.backend.model.repository.EquipoRepository;
 import utn.dacs.ms.backend.service.EquipoService;
@@ -20,7 +21,17 @@ public class EquipoServiceImpl implements EquipoService {
 
     @Override
     public List<Equipo> getByCoachId(String id) {
-        return equipoRepository.getByCoachId(id);
+        List<Equipo> equipos = equipoRepository.getByCoachId(id);
+        for (Equipo equipo : equipos) {
+            for (Jugador jugador : equipo.getJugadores()) {
+                List<EstadisticasPartido> estadisticasPartido = jugador.getEstadisticasPartido();
+                long puntajeTotal = estadisticasPartido.stream()
+                        .mapToLong(EstadisticasPartido::getPuntajeTotal)
+                        .sum();
+                jugador.setPuntajeTotal(puntajeTotal);
+            }
+        }
+        return equipos;
     }
 
     @Override
