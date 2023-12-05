@@ -26,6 +26,7 @@ export class InicioLogComponent implements OnInit {
   public perfilUsuario: KeycloakProfile | null = null;
   slides: any[] = [];
   partidos: Partido[] = [];
+  showPartidos: boolean = false;
 
   constructor(private newsService: NewsService, private partidoService: PartidoService, private cacheService: CacheService, private coachService: CoachService, private readonly keycloak: KeycloakService) {}
 
@@ -74,6 +75,9 @@ export class InicioLogComponent implements OnInit {
         puntosEquipo1: res.puntosEquipo1,
         puntosEquipo2: res.puntosEquipo2
       }));
+      if (this.partidos.length === 0){
+        this.showPartidos = true;
+      }
     });
   }
 
