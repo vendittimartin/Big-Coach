@@ -1,4 +1,4 @@
-# *Bienvenido a Big-Coach 🏀**
+# *Bienvenido a Big-Coach 🏀*
 ¡Bienvenido a Big-Coach, el juego de basket que te permite demostrar tus habilidades como estratega y manager de la NBA! Arma tu equipo de fantasía, compite con otros jugadores y ¡conviértete en el Big-Coach supremo!
 
 ##**Descripción**
@@ -11,8 +11,8 @@ Sistema de Puntos Real: Gana puntos en función del rendimiento real de tus juga
 
 Competiciones en Tiempo Real: Enfréntate a otros jugadores en competiciones en tiempo real y sube en la clasificación.
 
-##**Instrucciones para Levantar el Proyecto**
-###**Web**
+##*Instrucciones para Levantar el Proyecto*
+###*Web*
 Para levantar el servicio web, utiliza el siguiente comando en la terminal:
 
 ```bash
@@ -20,7 +20,7 @@ cd web
 ng serve -o
 ```
 
-###****API**
+###*API*
 Para levantar el servicio API, ejecuta el siguiente comando en la terminal:
 
 ```bash
@@ -28,7 +28,7 @@ cd api
 mvn clean spring-boot:run 
 ```
 
-###****BFF**
+###*BFF*
 El Backend for Frontend (BFF) se levanta con el siguiente comando:
 
 ```bash
@@ -36,7 +36,7 @@ cd bff
 mvn clean spring-boot:run 
 ```
 
-###****ConectorBDL**
+###*ConectorBDL*
 El Conector de BallDontLie (ConectorBDL) se inicia con:
 
 ```bash
@@ -44,7 +44,7 @@ cd conectorBDL
 mvn clean spring-boot:run 
 ```
 
-###****ConectorNews**
+###*ConectorNews*
 El Conector de Noticias (ConectorNews) se ejecuta con:
 
 ```bash
@@ -52,7 +52,7 @@ cd conectorNews
 mvn clean spring-boot:run 
 ```
 
-###****Keycloak**
+###*Keycloak*
 Descarga Keycloak y corre el servidor en el puerto 8080. Asegúrate de configurar el reino con el nombre "Big-Coach".
 
 ¡Y eso es todo! Con estos simples pasos, estarás listo para disfrutar de la emoción del baloncesto de fantasía con Big-Coach.
