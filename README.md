@@ -11,7 +11,7 @@ Sistema de Puntos Real: Gana puntos en función del rendimiento real de tus juga
 
 Competiciones en Tiempo Real: Enfréntate a otros jugadores en competiciones en tiempo real y sube en la clasificación.
 
-## **Instrucciones para Levantar el Proyecto**
+# **Instrucciones para Levantar el Proyecto**
 
 ## **Web**
 Para levantar el servicio web, utiliza el siguiente comando en la terminal:
