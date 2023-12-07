@@ -16,31 +16,40 @@ Web
 Para levantar el servicio web, utiliza el siguiente comando en la terminal:
 
 ```bash
-echo ng serve -o
+cd web
+ng serve -o
 ```
 
 API
 Para levantar el servicio API, ejecuta el siguiente comando en la terminal:
 
-bash
-Copy code
-mvn clean spring-boot:run -pl api
+```bash
+cd api
+mvn clean spring-boot:run 
+```
+
 BFF
 El Backend for Frontend (BFF) se levanta con el siguiente comando:
 
-bash
-Copy code
-mvn clean spring-boot:run -pl bff
+```bash
+cd bff
+mvn clean spring-boot:run 
+```
+
 ConectorBDL
 El Conector de Base de Datos de Jugadores (ConectorBDL) se inicia con:
 
-bash
-Copy code
-mvn clean spring-boot:run -pl conectorBDL
+```bash
+cd conectorBDL
+mvn clean spring-boot:run 
+```
+
 ConectorNews
 El Conector de Noticias (ConectorNews) se ejecuta con:
 
-bash
-Copy code
-mvn clean spring-boot:run -pl conectorNews
+```bash
+cd conectorNews
+mvn clean spring-boot:run 
+```
+
 ¡Y eso es todo! Ahora estás listo para sumergirte en el emocionante mundo de Big-Coach. ¡Que comience la competencia y que gane el mejor estratega! 🏀✨
