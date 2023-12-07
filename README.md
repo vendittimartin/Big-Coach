@@ -15,9 +15,10 @@ Instrucciones para Levantar el Proyecto
 Web
 Para levantar el servicio web, utiliza el siguiente comando en la terminal:
 
-bash
-Copy code
-ng serve -o
+```bash
+echo ng serve -o
+```
+
 API
 Para levantar el servicio API, ejecuta el siguiente comando en la terminal:
 
