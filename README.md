@@ -1,75 +1,45 @@
-<<<<<<< HEAD
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+Bienvenido a Big-Coach 🏀
+¡Bienvenido a Big-Coach, el juego de basket que te permite demostrar tus habilidades como estratega y manager de la NBA! Arma tu equipo de fantasía, compite con otros jugadores y ¡conviértete en el Big-Coach supremo!
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+Descripción
+Big-Coach es una aplicación de la NBA que te sumerge en el emocionante mundo del baloncesto profesional. Crea y administra tu equipo de fantasía, compite contra otros fanáticos del baloncesto y demuestra que eres el verdadero estratega en la cancha.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+Características Principales
+Arma tu Dream Team: Selecciona a tus jugadores favoritos de la NBA y construye el equipo de tus sueños.
 
----
+Sistema de Puntos Real: Gana puntos en función del rendimiento real de tus jugadores en los partidos de la NBA. ¡La estrategia es clave!
 
-## Edit a file
+Competiciones en Tiempo Real: Enfréntate a otros jugadores en competiciones en tiempo real y sube en la clasificación.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+Instrucciones para Levantar el Proyecto
+Web
+Para levantar el servicio web, utiliza el siguiente comando en la terminal:
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+bash
+Copy code
+ng serve -o
+API
+Para levantar el servicio API, ejecuta el siguiente comando en la terminal:
 
----
+bash
+Copy code
+mvn clean spring-boot:run -pl api
+BFF
+El Backend for Frontend (BFF) se levanta con el siguiente comando:
 
-## Create a file
+bash
+Copy code
+mvn clean spring-boot:run -pl bff
+ConectorBDL
+El Conector de Base de Datos de Jugadores (ConectorBDL) se inicia con:
 
-Next, you’ll add a new file to this repository.
+bash
+Copy code
+mvn clean spring-boot:run -pl conectorBDL
+ConectorNews
+El Conector de Noticias (ConectorNews) se ejecuta con:
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
-=======
-# Dacs
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
->>>>>>> 53fb72d (Initial commit)
+bash
+Copy code
+mvn clean spring-boot:run -pl conectorNews
+¡Y eso es todo! Ahora estás listo para sumergirte en el emocionante mundo de Big-Coach. ¡Que comience la competencia y que gane el mejor estratega! 🏀✨
